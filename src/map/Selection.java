@@ -55,7 +55,7 @@ class Selection {
                         dataSet.add(currentEntry);
                     }
 
-                    currentEntry = new PoliticalMap(nameBuffer.toString());
+                    currentEntry = new entrySect(nameBuffer.toString());
 
                 }
 
