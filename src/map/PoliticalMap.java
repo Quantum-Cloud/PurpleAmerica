@@ -24,19 +24,18 @@ public class PoliticalMap {
     
     public static void main(String[] args) {
         FileList list = new FileList();
-        List < String > fileNames = new ArrayList < > ();
+        String[] fileNames = new String[2000];
 
         System.out.println("Data Directory must be in Users/Username/Documents/NetBeansProjects/PurpleAmerica/src/data");
 
             final File folder = new File("C://Users/" + System.getProperty("user.name") + "/Documents/NetBeansProjects/PurpleAmerica/src/data/");
 
-                System.out.println(folder.toString());
-                    //Add library selection from dir 
+                //Add library selection from dir 
                 list.fileList(folder);
                 
                 //Parses and organizes text
-                    Selection select = new Selection();
-                        select.initialiseModule(fileNames);
+                Selection select = new Selection();
+                    select.initialiseModule(fileNames);
 
                 }
             //

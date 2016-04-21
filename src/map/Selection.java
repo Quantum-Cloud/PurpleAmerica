@@ -12,29 +12,36 @@ class Selection {
 
     private Scanner scanner;
     private Region currentEntry;
-    private List < Region > dataSet;
+    private String[] fileNames; 
+    private List< Region > dataSet; 
 
 
-    void initialiseModule(List < String > fileNames) {
-            
-            String file = fileNames.get(0);
-            
-            System.out.println(file);
+    void initialiseModule(String[] fileNames) {
+        try{
+                int i = 0;
+                i++; 
+                String file = fileNames[i];
+                System.out.println(file);
+                dataSet = new ArrayList<> (); 
 
-            dataSet = new ArrayList <  > ();
-            
-            scanner = new Scanner(file);
-            readData(scanner);
+                    scanner = new Scanner(file);
+                    //readData(scanner);
+        } catch (Exception e) {
+                e.printStackTrace();
+        }
     }
 
     private void readData(Scanner scanner) {
         StringBuilder nameBuffer = new StringBuilder();
-
+        int i = -1; 
+        
         while (scanner.hasNext()) {
             String input = scanner.next();
 
         if (input != null) {
+            i++;
             dataSet.add(currentEntry);
+            System.out.println(currentEntry.toString());
         }
 
         try {

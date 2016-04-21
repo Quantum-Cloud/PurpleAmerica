@@ -1,23 +1,23 @@
 package map;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
  * @author Rob
  */
 class FileList {
+    String[] fileNames = new String[2000];
+    int i = -1;
     
-    List < String > fileNames = new ArrayList < > ();
-    
-    List < String > fileList(final File folder) {
+    String[] fileList(final File folder) {
         for (final File fileEntry: folder.listFiles()) {
+            
             if (fileEntry.isDirectory()) {
                 fileList(fileEntry);
             } else {
-                fileNames.add(fileEntry.getName());
+                i++;
+                fileNames[i] = fileEntry.getName();     
             }
         }
         return fileNames;
