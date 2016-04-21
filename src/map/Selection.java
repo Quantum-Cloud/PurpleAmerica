@@ -12,56 +12,53 @@ class Selection {
 
     private Scanner scanner;
     private Region currentEntry;
-    private String[] fileNames; 
-    private List< Region > dataSet; 
-
+    private String[] fileNames;
+    //ALL THE INFORMATION NEEDED FOR EACH REGION SEPERATED BUT IN THE SAME SUBSECTION FOR SET OF COORDINATES
+    private List< Region> dataSet;
+    private String District;
+    private String Region;
+    private int DistrictNum;
 
     void initialiseModule(String[] fileNames) {
-        try{
-                int i = 0;
-                i++; 
-                String file = fileNames[i];
-                System.out.println(file);
-                dataSet = new ArrayList<> (); 
+        int i = 0;
+        i++;
+        String file = fileNames[i];
+        dataSet = new ArrayList< Region>();
 
-                    scanner = new Scanner(file);
-                    //readData(scanner);
-        } catch (Exception e) {
-                e.printStackTrace();
-        }
+        scanner = new Scanner(file);
+        readData(scanner, file);
+
+        initialiseModule(fileNames);
     }
 
-    private void readData(Scanner scanner) {
+    private void readData(Scanner scanner, String file) {
         StringBuilder nameBuffer = new StringBuilder();
-        int i = -1; 
-        
+                
         while (scanner.hasNext()) {
             String input = scanner.next();
 
-        if (input != null) {
-            i++;
-            dataSet.add(currentEntry);
-            System.out.println(currentEntry.toString());
-        }
+            if (input != null) {
+                dataSet.add(currentEntry);
+            }
 
-        try {
-            int coordinate = Integer.parseInt(input);
+            try {
+                int coordinate = Integer.parseInt(input);
 
-            if (currentEntry == null || currentEntry != null && nameBuffer.length() > 0) {
+                if (currentEntry == null || currentEntry != null && nameBuffer.length() > 0) {
 
-                if (currentEntry != null) {
-                    dataSet.add(currentEntry);
+                    if (currentEntry != null) {
+                        dataSet.add(currentEntry);
+                    }
+
+                    currentEntry = new Region(nameBuffer.toString());
+
                 }
 
-                currentEntry = new Region(nameBuffer.toString());
+                if (nameBuffer.length() > 0) {
+                    nameBuffer = new StringBuilder();
+                }
 
-            }
-
-            if (nameBuffer.length() > 0) {
-                nameBuffer = new StringBuilder();
-            }
-
-            currentEntry.addCoordinate(coordinate);
+                currentEntry.addCoordinate(coordinate);
 
             } catch (NumberFormatException ex) {
                 nameBuffer.append(input).append(" ");
