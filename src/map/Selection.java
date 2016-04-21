@@ -11,15 +11,18 @@ import java.util.Scanner;
 class Selection {
 
     private Scanner scanner;
-    private PoliticalMap currentEntry;
-    private List < PoliticalMap > dataSet;
+    private Region currentEntry;
+    private List < Region > dataSet;
 
 
     void initialiseModule(List < String > fileNames) {
+            
             String file = fileNames.get(0);
+            
             System.out.println(file);
 
-            dataSet = new ArrayList < PoliticalMap > ();
+            dataSet = new ArrayList <  > ();
+            
             scanner = new Scanner(file);
             readData(scanner);
     }
@@ -43,7 +46,7 @@ class Selection {
                     dataSet.add(currentEntry);
                 }
 
-                //currentEntry = new entrySect(nameBuffer.toString());
+                currentEntry = new Region(nameBuffer.toString());
 
             }
 

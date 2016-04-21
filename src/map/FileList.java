@@ -9,15 +9,17 @@ import java.util.List;
  * @author Rob
  */
 class FileList {
-   List<String> fileNames = new ArrayList<>(); 
-   List<String> fileList(final File folder) {
-        for (final File fileEntry : folder.listFiles()){
-                if(fileEntry.isDirectory()){
-                    fileList(fileEntry);
-                }
-                else {
-                    fileNames.add(fileEntry.getName());
-                }            
-            } return fileNames;
+    
+    List < String > fileNames = new ArrayList < > ();
+    
+    List < String > fileList(final File folder) {
+        for (final File fileEntry: folder.listFiles()) {
+            if (fileEntry.isDirectory()) {
+                fileList(fileEntry);
+            } else {
+                fileNames.add(fileEntry.getName());
+            }
         }
+        return fileNames;
     }
+}

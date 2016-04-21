@@ -36,12 +36,10 @@ public class PoliticalMap {
                 
                 //Parses and organizes text
                     Selection select = new Selection();
-                    select.initialiseModule(fileNames);
+                        select.initialiseModule(fileNames);
 
                 }
-
-    
-    public void addCoordinate(int coordinates) {
-        throw new UnsupportedOperationException("Not supported yet.");
-        }
-    }
+            //
+        //
+    //
+}
