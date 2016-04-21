@@ -13,26 +13,24 @@
 package map;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
  * @Robbie
  */
 public class PoliticalMap {
-    
+ 
     public static void main(String[] args) {
         FileList list = new FileList();
-        String[] fileNames = new String[2000];
-
+       
         System.out.println("Data Directory must be in Users/Username/Documents/NetBeansProjects/PurpleAmerica/src/data");
 
             final File folder = new File("C://Users/" + System.getProperty("user.name") + "/Documents/NetBeansProjects/PurpleAmerica/src/data/");
 
                 //Add library selection from dir 
-                list.fileList(folder);
-                
+                String[] fileNames = new String[2000];
+                fileNames = list.fileList(folder);
+                      
                 //Parses and organizes text
                 Selection select = new Selection();
                     select.initialiseModule(fileNames);
