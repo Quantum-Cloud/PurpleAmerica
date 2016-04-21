@@ -16,8 +16,6 @@ import java.util.Scanner;
  */
 public class Map {
 
-    File file = new File("C:\\Users\\hcps-traceync\\Documents\\NetBeansProjects\\PurpleAmerica\\src\\data\\VA.txt");
-
     Scanner scan;
 
     public Map() {
