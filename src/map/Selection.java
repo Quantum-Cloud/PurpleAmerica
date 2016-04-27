@@ -14,26 +14,32 @@ class Selection {
     private Region currentEntry;
     private String[] fileNames;
     //ALL THE INFORMATION NEEDED FOR EACH REGION SEPERATED BUT IN THE SAME SUBSECTION FOR SET OF COORDINATES
-    private List< Region> dataSet;
+    private List <Region> dataSet;
     private String District;
     private String Region;
     private int DistrictNum;
+    //private int i = 0;
 
     void initialiseModule(String[] fileNames) {
-        int i = 0;
-        i++;
-        String file = fileNames[i];
-        dataSet = new ArrayList< Region>();
-
-        scanner = new Scanner(file);
-        readData(scanner, file);
-
-        initialiseModule(fileNames);
+        try {
+            dataSet = new ArrayList<>();
+            //i++;
+            //    String file = fileNames[i];
+            String file = "USA.txt";
+            
+            scanner = new Scanner(file);
+            readData(scanner, file);
+            
+                initialiseModule(fileNames);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
     }
 
     private void readData(Scanner scanner, String file) {
         StringBuilder nameBuffer = new StringBuilder();
-                
+            
         while (scanner.hasNext()) {
             String input = scanner.next();
 
@@ -42,7 +48,7 @@ class Selection {
             }
 
             try {
-                int coordinate = Integer.parseInt(input);
+                Double coordinate = Double.parseDouble(input);
 
                 if (currentEntry == null || currentEntry != null && nameBuffer.length() > 0) {
 
