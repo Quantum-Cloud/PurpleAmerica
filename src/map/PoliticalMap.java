@@ -19,8 +19,6 @@ import java.io.FileNotFoundException;
  */
 public class PoliticalMap {
     public static void main(String[] args) throws FileNotFoundException{
-        Map map = new Map();
-        
-         
+        Map map = new Map();  
     }
 }
