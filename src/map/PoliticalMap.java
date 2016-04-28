@@ -18,6 +18,7 @@ import java.util.Arrays;
 import java.util.List;
 import edu.princeton.cs.introcs.*;
 import java.io.FileNotFoundException;
+import javax.swing.JOptionPane;
 
 
 
@@ -33,8 +34,7 @@ public class PoliticalMap {
          * ***************************** Variables
          * *******************************
          */
-        List<String> dataSet;
-        List<Double> coordinates;
+        boolean dirFound = false; 
         /**
          * Organic Variables *
          */
@@ -51,11 +51,17 @@ public class PoliticalMap {
          */
         Selection select = region.getSelection();
         select.selectFolder();
-        System.out.println("Currently, Data Directory MUST be in Users/Username/Documents/NetBeansProjects/PurpleAmerica/src/data");
-            final File folder = new File("C://Users/" + System.getProperty("user.name") + "/Documents/NetBeansProjects/PurpleAmerica/src/data/");
-            ArrayList<File> files = new ArrayList<>(Arrays.asList(folder.listFiles()));
-            
-        //Add library selection from dir 
+        
+                while(dirFound!=true){
+                    final File folder = new File(JOptionPane.showInputDialog("Enter the directory which you have saved the file: "));
+                    try {
+                        ArrayList<File> files = new ArrayList<>(Arrays.asList(folder.listFiles()));
+                        dirFound=true;
+                    } catch (Exception e) {
+                        System.out.println("You entered the directory incorrectly, double check the folder directory and try again");
+                    }
+                }
+        
         /**
          * **************************** Mechanics
          * ********************************

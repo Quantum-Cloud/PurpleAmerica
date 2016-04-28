@@ -36,6 +36,7 @@ class Selection {
 
     private List<String> readData(Scanner scanner) {
         List<String> dataTemp = new ArrayList<>();
+        
         while (scanner.hasNext()) {
             String input = scanner.next();
 
@@ -43,12 +44,14 @@ class Selection {
                 dataTemp.add(input);
 
                 double coordinate = 0;
-                try {
+                try {    
                     
-                    coordinate = Double.parseDouble(input);
+                    coordinate = Double.parseDouble(input); 
                     
                 } catch (NumberFormatException e) {
+                    
                     region.addRegionSection(input);
+                    
                 }
                 region.addCoordinate(coordinate);
             }

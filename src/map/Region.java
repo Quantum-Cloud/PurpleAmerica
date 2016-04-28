@@ -52,9 +52,9 @@ public final class Region {
     }
 
     public void addCoordinate(double coordinate) {
-        //if(coordinate.toString().stringIndexOf('.0'))) {
-        coordinates.add(coordinate);
-        //}
+        if(Double.toString(coordinate).length() > 5) {
+            coordinates.add(coordinate);
+        }
     }
     
     public void addRegionSection(String input){
@@ -100,8 +100,7 @@ public final class Region {
             return false;
         }
     }
-
-    //Unsupported methods
+    
     @Override
     public String toString() {
         return new StringBuffer("Region: " + regionName).append("|Data: ").append(Arrays.toString(dataSet.toArray())).toString();
