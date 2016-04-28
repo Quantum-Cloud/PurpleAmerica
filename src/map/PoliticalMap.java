@@ -1,7 +1,7 @@
 /*
  * Political Map Project
- * Name: 
- * Block:
+ * Name: Robbie VanDerzee
+ * Block: 7
  * 
  * Program Purpose:
  *
@@ -11,14 +11,57 @@
  *
  */
 package map;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import edu.princeton.cs.introcs.*;
 import java.io.FileNotFoundException;
+
+
+
 /**
  *
- * @author 
+ * @Robbie
  */
 public class PoliticalMap {
-    public static void main(String[] args) throws FileNotFoundException{
-        Map map = new Map();  
+
+    public static void main(String[] args) {
+        
+        /**
+         * ***************************** Variables
+         * *******************************
+         */
+        List<String> dataSet;
+        List<Double> coordinates;
+        /**
+         * Organic Variables *
+         */
+        /**
+         * **************************** Constructors
+         * *****************************
+         */
+        FileList list = new FileList();
+        Region region = new Region("USA");
+        Map map = new Map();
+
+        /**
+         * ******************************* Repo
+         * **********************************
+         */
+        Selection select = region.getSelection();
+        select.selectFolder();
+        System.out.println("Currently, Data Directory MUST be in Users/Username/Documents/NetBeansProjects/PurpleAmerica/src/data");
+            final File folder = new File("C://Users/" + System.getProperty("user.name") + "/Documents/NetBeansProjects/PurpleAmerica/src/data/");
+            ArrayList<File> files = new ArrayList<>(Arrays.asList(folder.listFiles()));
+            
+        //Add library selection from dir 
+        /**
+         * **************************** Mechanics
+         * ********************************
+         */
+        System.out.println(region);
+
     }
 }
