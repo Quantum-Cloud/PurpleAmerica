@@ -15,11 +15,7 @@ package map;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import edu.princeton.cs.introcs.*;
-import java.io.FileNotFoundException;
-
-
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -28,37 +24,31 @@ import java.io.FileNotFoundException;
 public class PoliticalMap {
 
     public static void main(String[] args) {
-        
+
         /**
-         * ***************************** Variables
-         * *******************************
+         * ***************************** Variables *******************************
          */
-        List<String> dataSet;
-        List<Double> coordinates;
         /**
          * Organic Variables *
          */
         /**
-         * **************************** Constructors
-         * *****************************
-         */       
+         * **************************** Constructors *****************************
+         */
         Region region = new Region("USA");
         Map map = new Map();
 
         /**
-         * ******************************* Repo
-         * **********************************
+         * ******************************* Repo **********************************
          */
         Selection select = region.getSelection();
-        select.selectFolder();
-        System.out.println("Currently, Data Directory MUST be in Users/Username/Documents/NetBeansProjects/PurpleAmerica/src/data");
-            final File folder = new File("C://Users/" + System.getProperty("user.name") + "/Documents/NetBeansProjects/PurpleAmerica/src/data/");
-            ArrayList<File> files = new ArrayList<>(Arrays.asList(folder.listFiles()));
-            
-        //Add library selection from dir 
+            try {
+                select.selectFolder();
+            } catch (Exception e) {
+                System.out.println("Folder selection has been canceled.");
+            }
+
         /**
-         * **************************** Mechanics
-         * ********************************
+         * **************************** Mechanics ********************************
          */
         System.out.println(region);
 
