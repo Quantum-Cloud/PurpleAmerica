@@ -7,6 +7,7 @@ package map;
 
 import java.io.File;
 import java.util.*;
+import edu.princeton.cs.introcs.StdDraw;
 
 /**
  *
@@ -15,14 +16,15 @@ import java.util.*;
 public final class Region {
 
     private final String regionName;
-    private File file;
+    private final File file;
+    private final Selection select;
+    int districtNum;
     private List<String> dataSet;
     private List<Double> coordinates;
     private List<Double> boundaries;
     private List<Double> coordX;
     private List<Double> coordY;
-    int districtNum;
-    private Selection select;
+    private List<String> subRegions;
 
     public Region(String regionName) {
         select = new Selection();
@@ -32,7 +34,8 @@ public final class Region {
     }
 
     public void initialize() {
-        coordinates = new ArrayList<>();
+        coordinates = new ArrayList<>();  
+        subRegions = new ArrayList<>();
         dataSet = select.initializeModule(this);
         districtNum = Integer.parseInt(dataSet.get(4));
         boundaries = new ArrayList<>();
@@ -57,8 +60,13 @@ public final class Region {
         }
     }
     
-    public void addRegionSection(String input){
-        
+    public void addRegionSection(String input, String index){   
+            subRegions.add(index);
+            subRegions.add(input);
+    }
+    
+    public List<String> getRegionSection(List<String> subRegions){
+        return subRegions;
     }
 
     public void getXCoordinates(List<Double> coordinates) {
@@ -90,6 +98,10 @@ public final class Region {
 
     public List<Double> getCoordinates(List<String> dataSet) {
         return coordinates;
+    }
+    
+    public void drawRegion(){
+        Map map = new Map();
     }
 
     public boolean isDouble(String test) {
