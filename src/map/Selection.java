@@ -17,6 +17,7 @@ public class Selection {
     private List<String> dataSet;
     private Region region;
     private File file;
+    private int index = 0; 
 
     void selectFolder() {
         boolean dirFound = false;
@@ -49,13 +50,13 @@ public class Selection {
 
     private List<String> readData(Scanner scanner) {
         List<String> dataTemp = new ArrayList<>();
-
+ 
         while (scanner.hasNext()) {
             String input = scanner.next();
-
+            
             if (input != null) {
                 dataTemp.add(input);
-
+                index++;
                 double coordinate = 0;
                 try {
 
@@ -63,7 +64,7 @@ public class Selection {
 
                 } catch (NumberFormatException e) {
 
-                    region.addRegionSection(input);
+                    region.addRegionSection(input, Integer.toString(index));
 
                 }
                 region.addCoordinate(coordinate);
