@@ -29,12 +29,11 @@ public final class Region {
         this.regionName = regionName;
         file = new File("C://Users/" + System.getProperty("user.name") + "/Documents/NetBeansProjects/PurpleAmerica/src/data/" + regionName + ".txt");
         initialize();
-
     }
 
     public void initialize() {
         coordinates = new ArrayList<>();
-        dataSet = select.initialiseModule(this);
+        dataSet = select.initializeModule(this);
         districtNum = Integer.parseInt(dataSet.get(4));
         boundaries = new ArrayList<>();
         getCoordinateBoundaries(coordinates);
@@ -54,6 +53,9 @@ public final class Region {
 
     public void addCoordinate(double coordinate) {
         coordinates.add(coordinate);
+    }
+    public void addRegionSection(String input){
+        
     }
 
     public void getXCoordinates(List<Double> coordinates) {
@@ -99,6 +101,6 @@ public final class Region {
     //Unsupported methods
     @Override
     public String toString() {
-        return new StringBuffer("Name: " + regionName).append("|Section: ").append(Arrays.toString(coordinates.toArray())).toString();
+        return new StringBuffer("Region: " + regionName).append("|Data: ").append(Arrays.toString(dataSet.toArray())).toString();
     }
 }

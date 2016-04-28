@@ -20,7 +20,7 @@ class Selection {
         System.out.println("GUI file selection is currently unsupported ");
     }
 
-    List<String> initialiseModule(Region r) {
+    List<String> initializeModule(Region r) {
         List<String> dataTemp = new ArrayList<>();
         region = r;
         try {
@@ -44,9 +44,11 @@ class Selection {
 
                 double coordinate = 0;
                 try {
+                    
                     coordinate = Double.parseDouble(input);
+                    
                 } catch (NumberFormatException e) {
-                    //e.printStackTrace();
+                    region.addRegionSection(input);
                 }
                 region.addCoordinate(coordinate);
             }
