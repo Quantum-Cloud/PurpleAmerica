@@ -17,6 +17,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import edu.princeton.cs.introcs.*;
+import java.io.FileNotFoundException;
+
+
 
 /**
  *
@@ -25,6 +28,7 @@ import edu.princeton.cs.introcs.*;
 public class PoliticalMap {
 
     public static void main(String[] args) {
+        
         /**
          * ***************************** Variables
          * *******************************
@@ -40,7 +44,7 @@ public class PoliticalMap {
          */
         FileList list = new FileList();
         Region region = new Region("USA");
-        
+        Map map = new Map();
 
         /**
          * ******************************* Repo
@@ -58,5 +62,6 @@ public class PoliticalMap {
          * ********************************
          */
         System.out.println(region);
+
     }
 }
