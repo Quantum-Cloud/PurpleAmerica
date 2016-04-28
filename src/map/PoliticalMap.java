@@ -27,7 +27,7 @@ public class PoliticalMap {
          * ***************************** Variables *******************************
          */
         List<String> dataSet;
-        List<Double> coordinates; 
+        List<Double> coordinates;
         /**
          * Organic Variables *
          */
@@ -43,13 +43,13 @@ public class PoliticalMap {
         select.selectFolder();
         System.out.println("Currently, Data Directory MUST be in Users/Username/Documents/NetBeansProjects/PurpleAmerica/src/data");
         final File folder = new File("C://Users/" + System.getProperty("user.name") + "/Documents/NetBeansProjects/PurpleAmerica/src/data/");
-            list.fileList(folder);
+        list.fileList(folder);
         //Add library selection from dir 
         /**
          * **************************** Mechanics ********************************
          */
-            dataSet = region.getRegionDataSet(region);
-            coordinates = region.getCoordinates(region);
-               // System.out.println(coordinates.get(0));
+        dataSet = region.getRegionDataSet(region);
+        coordinates = region.getCoordinates(region);
+        // System.out.println(coordinates.get(0));
     }
 }

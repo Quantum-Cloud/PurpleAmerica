@@ -22,7 +22,6 @@ class Selection {
     List<String> initialiseModule(File file) {
         try {
             Region region = new Region("USA");
-            dataSet = new ArrayList<>();
             scanner = new Scanner(file);
             dataSet = readData(scanner);
 
@@ -38,9 +37,9 @@ class Selection {
             String input = scanner.next();
 
             if (input != null) {
-                dataSet.add(scanner.next());
-                double coordinate = Double.parseDouble(input);
+                dataSet.add(input);
 
+                double coordinate = Double.parseDouble(input);
                 try {
                     Double.parseDouble(input);
 
