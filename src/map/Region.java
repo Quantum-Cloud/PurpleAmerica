@@ -5,6 +5,7 @@
  */
 package map;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -17,21 +18,33 @@ public class Region {
 
     private final String regionName;
     private List<Double> coordinates;
-    private double coordinate;
-
+    private List<Double> boundaries;
+    String valueOfRegionObject;
+    
     Selection select = new Selection();
 
     public Region(String regionName) {
         this.regionName = regionName;
         List<Double> coordinates = new ArrayList<>();
+        List<Double> boundaries = new ArrayList<>();
+        List<String> dataSet = new ArrayList<>();
     }
-
+    
     public void addCoordinate(double coordinate) {
         coordinates.add(coordinate);
     }
+    
+    public List<Double> getCoordinateBoundaries(Region region) {
+        boundaries.set(0, coordinates.get(0));
+        boundaries.set(1, coordinates.get(1));
+        boundaries.set(2, coordinates.get(2));
+        boundaries.set(3, coordinates.get(3));
+        return boundaries;
+    }
 
-    public List<Region> getRegionDataSet(Region region) {     
-        List<Region> dataSet = select.initialiseModule(regionName + ".txt");
+    public List<String> getRegionDataSet(Region region) {
+        File file = new File("C://Users/" + System.getProperty("user.name") + "/Documents/NetBeansProjects/PurpleAmerica/src/data/USA.txt");
+        List<String> dataSet = select.initialiseModule(file);
         return dataSet;
     }
 
@@ -39,26 +52,13 @@ public class Region {
         return regionName;
     }
 
-    public double getCoordinate(int location) {
-        return coordinate;
-    }
-
-    public List<Double> getCoordinates(List<Region> dataSet) {
-        int size = dataSet.size();
-        
-        for (int i = 0; i < size; i++) {
-            String valueOfRegionObject = dataSet.get(i).toString();
-            if (isDouble(valueOfRegionObject) == true) {
-                coordinates.add(Double.parseDouble(valueOfRegionObject));
-                System.out.print(valueOfRegionObject);
-            }
-        }
+    public List<Double> getCoordinates(Region region) {
         return coordinates;
     }
 
-    boolean isDouble(String valueOfRegionObject) {
+    public boolean isDouble(String currentEntry) {
         try {
-            Double.parseDouble(valueOfRegionObject);
+            Double.parseDouble(currentEntry);
             return true;
         } catch (NumberFormatException e) {
             return false;
