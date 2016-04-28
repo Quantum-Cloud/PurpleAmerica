@@ -41,8 +41,7 @@ public class PoliticalMap {
         /**
          * **************************** Constructors
          * *****************************
-         */
-        FileList list = new FileList();
+         */       
         Region region = new Region("USA");
         Map map = new Map();
 
