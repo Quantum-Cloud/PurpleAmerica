@@ -14,39 +14,39 @@ class Selection {
     private Region currentEntry;
     private String[] fileNames;
     //ALL THE INFORMATION NEEDED FOR EACH REGION SEPERATED BUT IN THE SAME SUBSECTION FOR SET OF COORDINATES
-    private List <Region> dataSet;
+    public List<Region> dataSet;
     private String District;
     private String Region;
     private int DistrictNum;
-    //private int i = 0;
+    private String file;
+    
 
-    void initialiseModule(String[] fileNames) {
+    void selectFolder() {
+        System.out.println("GUI file selection is currently unsupported ");
+    }
+
+    List<Region> initialiseModule(String file) {
         try {
             dataSet = new ArrayList<>();
-            //i++;
-            //    String file = fileNames[i];
-            String file = "USA.txt";
-            
             scanner = new Scanner(file);
             readData(scanner, file);
-            
-                initialiseModule(fileNames);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+        return dataSet;
     }
 
     private void readData(Scanner scanner, String file) {
         StringBuilder nameBuffer = new StringBuilder();
-            
+
         while (scanner.hasNext()) {
             String input = scanner.next();
 
             if (input != null) {
                 dataSet.add(currentEntry);
             }
-
+            
             try {
                 Double coordinate = Double.parseDouble(input);
 
@@ -63,10 +63,10 @@ class Selection {
                 if (nameBuffer.length() > 0) {
                     nameBuffer = new StringBuilder();
                 }
-
-                currentEntry.addCoordinate(coordinate);
-
-            } catch (NumberFormatException ex) {
+                
+                    currentEntry.addCoordinate(coordinate);
+                    
+            } catch (NumberFormatException e) {
                 nameBuffer.append(input).append(" ");
             }
         }

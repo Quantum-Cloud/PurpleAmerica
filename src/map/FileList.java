@@ -9,7 +9,7 @@ import java.io.File;
 class FileList {
 
     int i = -1;
-    String[] temp = new String[1000];
+    String[] fileNames = new String[1000];
 
     public String[] fileList(final File folder) {
         for (final File fileEntry : folder.listFiles()) {
@@ -18,9 +18,9 @@ class FileList {
                 fileList(fileEntry);
             } else {
                 i++;
-                temp[i] = fileEntry.getName();
+                fileNames[i] = fileEntry.getName();
             }
         }
-        return temp;
+        return fileNames;
     }
 }

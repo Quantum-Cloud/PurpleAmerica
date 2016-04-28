@@ -13,6 +13,8 @@
 package map;
 
 import java.io.File;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  *
@@ -21,19 +23,39 @@ import java.io.File;
 public class PoliticalMap {
 
     public static void main(String[] args) {
-        FileList list = new FileList();
-
-        System.out.println("Data Directory must be in Users/Username/Documents/NetBeansProjects/PurpleAmerica/src/data");
-
-        final File folder = new File("C://Users/" + System.getProperty("user.name") + "/Documents/NetBeansProjects/PurpleAmerica/src/data/");
-
-        //Add library selection from dir 
+        /**
+         * ***************************** Variables *******************************
+         */
         String[] fileNames = new String[1000];
-        fileNames = list.fileList(folder);
-
-        //Parses and organizes text
+        String file = "USA.txt";
+        String regionName = "USA";
+        List<Region> dataSet;
+        List<Double> coordinates; 
+        /**
+         * Organic Variables *
+         */
+        /**
+         * **************************** Constructors *****************************
+         */
+        FileList list = new FileList();
         Selection select = new Selection();
-        select.initialiseModule(fileNames);
-
+        Region region = new Region("USA");
+        /**
+         * ******************************* Repo **********************************
+         */
+        select.selectFolder();
+        System.out.println("Currently, Data Directory MUST be in Users/Username/Documents/NetBeansProjects/PurpleAmerica/src/data");
+        final File folder = new File("C://Users/" + System.getProperty("user.name") + "/Documents/NetBeansProjects/PurpleAmerica/src/data/");
+        /**
+         * ******************************* Menu **********************************
+         */
+        //Add library selection from dir 
+        /**
+         * **************************** Mechanics ********************************
+         */
+        list.fileList(folder);
+        file = "USA.txt";
+            dataSet = region.getRegionDataSet(region);
+            coordinates = region.getCoordinates(dataSet);
     }
 }

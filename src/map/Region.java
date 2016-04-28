@@ -13,38 +13,61 @@ import java.util.List;
  *
  * @author Rob
  */
-public class Region implements Comparable<Region> {
+public class Region {
 
     private final String regionName;
-    private final List< Double> coordinates;
+    private List<Double> coordinates;
+    private double coordinate;
+
+    Selection select = new Selection();
 
     public Region(String regionName) {
         this.regionName = regionName;
-        System.out.println(regionName);
-        this.coordinates = new ArrayList<>();
+        List<Double> coordinates = new ArrayList<>();
     }
 
     public void addCoordinate(double coordinate) {
         coordinates.add(coordinate);
     }
 
-    public String getRegionName() {
+    public List<Region> getRegionDataSet(Region region) {     
+        List<Region> dataSet = select.initialiseModule(regionName + ".txt");
+        return dataSet;
+    }
+
+    public String getRegionName(Region region) {
         return regionName;
     }
 
-    public List< Double> getCoordinates(List< Region> dataSet) {
-        List<Double> coord = new ArrayList<>();
-        return coord;
+    public double getCoordinate(int location) {
+        return coordinate;
     }
 
-    //
+    public List<Double> getCoordinates(List<Region> dataSet) {
+        int size = dataSet.size();
+        
+        for (int i = 0; i < size; i++) {
+            String valueOfRegionObject = dataSet.get(i).toString();
+            if (isDouble(valueOfRegionObject) == true) {
+                coordinates.add(Double.parseDouble(valueOfRegionObject));
+                System.out.print(valueOfRegionObject);
+            }
+        }
+        return coordinates;
+    }
+
+    boolean isDouble(String valueOfRegionObject) {
+        try {
+            Double.parseDouble(valueOfRegionObject);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    //Unsupported methods
     @Override
     public String toString() {
         return new StringBuffer("Name: " + regionName).append("|Section: ").append(Arrays.toString(coordinates.toArray())).toString();
-    }
-
-    @Override
-    public int compareTo(Region o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
