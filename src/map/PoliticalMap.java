@@ -39,7 +39,7 @@ public class PoliticalMap {
          * *****************************
          */
         FileList list = new FileList();
-            Region region = new Region("USA");
+        Region region = new Region("USA");
         
 
         /**
@@ -58,6 +58,5 @@ public class PoliticalMap {
          * ********************************
          */
         System.out.println(region);
-        // System.out.println(coordinates.get(0));
     }
 }
