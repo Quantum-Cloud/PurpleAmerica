@@ -6,63 +6,76 @@
 package map;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  *
  * @author Rob
  */
-public class Region {
+public final class Region {
 
     private final String regionName;
+    private File file;
+    private List<String> dataSet;
     private List<Double> coordinates;
     private List<Double> boundaries;
     private List<Double> coordX;
     private List<Double> coordY;
-    String valueOfRegionObject;
-
-    Selection select = new Selection();
+    int districtNum;
+    private Selection select;
 
     public Region(String regionName) {
+        select = new Selection();
         this.regionName = regionName;
-        List<Double> coordinates = new ArrayList<>();
-        List<Double> boundaries = new ArrayList<>();
-        List<String> dataSet = new ArrayList<>();
-        List<Double> coordX = new ArrayList<>();
-        List<Double> coordY = new ArrayList<>();
+        file = new File("C://Users/" + System.getProperty("user.name") + "/Documents/NetBeansProjects/PurpleAmerica/src/data/" + regionName + ".txt");
+        initialize();
+
+    }
+
+    public void initialize() {
+        coordinates = new ArrayList<>();
+        dataSet = select.initialiseModule(this);
+        districtNum = Integer.parseInt(dataSet.get(4));
+        boundaries = new ArrayList<>();
+        getCoordinateBoundaries(coordinates);
+        coordX = new ArrayList<>();
+        getXCoordinates(coordinates);
+        coordY = new ArrayList<>();
+        getYCoordinates(coordinates);
+    }
+
+    public Selection getSelection() {
+        return select;
+    }
+
+    public File getRegionFile() {
+        return file;
     }
 
     public void addCoordinate(double coordinate) {
         coordinates.add(coordinate);
     }
 
-    public List<Double> getXCoordinates(List<Double> coordinates) {
+    public void getXCoordinates(List<Double> coordinates) {
         for (int i = 0; i < coordinates.size(); i += 2) {
             coordX.add(coordinates.get(i));
         }
-        return coordX;
     }
 
-    public List<Double> getYCoordinates(List<Double> coordinates) {
-        for (int i = 1; i <= coordinates.size(); i += 2) {
-            coordX.add(coordinates.get(i));
+    public void getYCoordinates(List<Double> coordinates) {
+        for (int i = 1; i < coordinates.size(); i += 2) {
+            coordY.add(coordinates.get(i));
         }
-        return coordY;
     }
 
-    public List<Double> getCoordinateBoundaries(Region region) {
-        boundaries.set(0, coordinates.get(0));
-        boundaries.set(1, coordinates.get(1));
-        boundaries.set(2, coordinates.get(2));
-        boundaries.set(3, coordinates.get(3));
-        return boundaries;
+    public void getCoordinateBoundaries(List<Double> coordinates) {
+        boundaries.add(0, coordinates.get(3));
+        boundaries.add(0, coordinates.get(2));
+        boundaries.add(0, coordinates.get(1));
+        boundaries.add(0, coordinates.get(0));
     }
 
-    public List<String> getRegionDataSet(Region region) {
-        File file = new File("C://Users/" + System.getProperty("user.name") + "/Documents/NetBeansProjects/PurpleAmerica/src/data/USA.txt");
-        List<String> dataSet = select.initialiseModule(file);
+    public List<String> getRegionDataSet() {
         return dataSet;
     }
 
@@ -70,7 +83,7 @@ public class Region {
         return regionName;
     }
 
-    public List<Double> getCoordinates(Region region) {
+    public List<Double> getCoordinates(List<String> dataSet) {
         return coordinates;
     }
 

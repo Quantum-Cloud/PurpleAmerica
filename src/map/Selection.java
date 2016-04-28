@@ -12,44 +12,46 @@ import java.util.Scanner;
 class Selection {
 
     private Scanner scanner;
-    public List<String> dataSet;
-    Region region;
+    private List<String> dataSet;
+    private Region region;
+    private File file;
 
     void selectFolder() {
         System.out.println("GUI file selection is currently unsupported ");
     }
 
-    List<String> initialiseModule(File file) {
+    List<String> initialiseModule(Region r) {
+        List<String> dataTemp = new ArrayList<>();
+        region = r;
         try {
-            Region region = new Region("USA");
+            file = region.getRegionFile();
             scanner = new Scanner(file);
-            dataSet = readData(scanner);
+            dataTemp = readData(scanner);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return dataSet;
+        return dataTemp;
     }
 
     private List<String> readData(Scanner scanner) {
-
+        List<String> dataTemp = new ArrayList<>();
         while (scanner.hasNext()) {
             String input = scanner.next();
 
             if (input != null) {
-                dataSet.add(input);
+                dataTemp.add(input);
 
-                double coordinate = Double.parseDouble(input);
+                double coordinate = 0;
                 try {
-                    Double.parseDouble(input);
-
+                    coordinate = Double.parseDouble(input);
                 } catch (NumberFormatException e) {
-                    e.printStackTrace();
+                    //e.printStackTrace();
                 }
                 region.addCoordinate(coordinate);
             }
 
         }
-        return dataSet;
+        return dataTemp;
     }
 }
