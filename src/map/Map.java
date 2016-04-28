@@ -15,6 +15,17 @@ public class Map {
     int[] coords;
 
     public Map() {
+        /*try {
+         scan = new Scanner(file);
+         } catch (FileNotFoundException ex) {
+         System.out.println("file not found");
+         }
+         while (scan.hasNextInt()) {     //testing stuff
+         StdDraw.setPenRadius(.05);
+         StdDraw.point(50, 50);
+         System.out.println("" + scan.hasNextInt());
+         }*/
+        
         coords = new int[10];   //test coordinates
         coords[0] = 50;
         coords[1] = 100;
