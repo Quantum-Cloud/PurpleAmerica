@@ -44,7 +44,6 @@ public class PoliticalMap {
             try {
                 select.selectFolder();
             } catch (Exception e) {
-                e.printStackTrace();
                 System.out.println("Folder selection has been canceled.");
             }
 

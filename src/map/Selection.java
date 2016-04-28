@@ -28,7 +28,6 @@ public class Selection {
                 dirFound = true;
 
             } catch (Exception e) {
-                e.printStackTrace();
                 System.out.println("You entered the directory incorrectly, double check the folder directory and try again");
             }
         }
