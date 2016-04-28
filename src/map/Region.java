@@ -52,7 +52,9 @@ public final class Region {
     }
 
     public void addCoordinate(double coordinate) {
+        //if(coordinate.toString().stringIndexOf('.0'))) {
         coordinates.add(coordinate);
+        //}
     }
     public void addRegionSection(String input){
         
