@@ -2,14 +2,16 @@ package map;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author hcps-vanderzrs
  */
-class Selection {
+public class Selection {
 
     private Scanner scanner;
     private List<String> dataSet;
@@ -17,7 +19,19 @@ class Selection {
     private File file;
 
     void selectFolder() {
-        System.out.println("GUI file selection is currently unsupported ");
+        boolean dirFound = false;
+        while (dirFound != true) {
+            final File folder = new File(JOptionPane.showInputDialog("Enter the directory which you have saved the file: "));
+
+            try {
+                ArrayList<File> files = new ArrayList<>(Arrays.asList(folder.listFiles()));
+                dirFound = true;
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println("You entered the directory incorrectly, double check the folder directory and try again");
+            }
+        }
     }
 
     List<String> initializeModule(Region r) {
@@ -36,7 +50,7 @@ class Selection {
 
     private List<String> readData(Scanner scanner) {
         List<String> dataTemp = new ArrayList<>();
-        
+
         while (scanner.hasNext()) {
             String input = scanner.next();
 
@@ -44,14 +58,14 @@ class Selection {
                 dataTemp.add(input);
 
                 double coordinate = 0;
-                try {    
-                    
-                    coordinate = Double.parseDouble(input); 
-                    
+                try {
+
+                    coordinate = Double.parseDouble(input);
+
                 } catch (NumberFormatException e) {
-                    
+
                     region.addRegionSection(input);
-                    
+
                 }
                 region.addCoordinate(coordinate);
             }

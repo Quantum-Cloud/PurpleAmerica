@@ -92,9 +92,9 @@ public final class Region {
         return coordinates;
     }
 
-    public boolean isDouble(String currentEntry) {
+    public boolean isDouble(String test) {
         try {
-            Double.parseDouble(currentEntry);
+            Double.parseDouble(test);
             return true;
         } catch (NumberFormatException e) {
             return false;

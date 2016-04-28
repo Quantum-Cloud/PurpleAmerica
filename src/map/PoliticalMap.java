@@ -15,12 +15,7 @@ package map;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import edu.princeton.cs.introcs.*;
-import java.io.FileNotFoundException;
 import javax.swing.JOptionPane;
-
-
 
 /**
  *
@@ -29,42 +24,32 @@ import javax.swing.JOptionPane;
 public class PoliticalMap {
 
     public static void main(String[] args) {
-        
+
         /**
-         * ***************************** Variables
-         * *******************************
+         * ***************************** Variables *******************************
          */
-        boolean dirFound = false; 
         /**
          * Organic Variables *
          */
         /**
-         * **************************** Constructors
-         * *****************************
-         */       
+         * **************************** Constructors *****************************
+         */
         Region region = new Region("USA");
         Map map = new Map();
 
         /**
-         * ******************************* Repo
-         * **********************************
+         * ******************************* Repo **********************************
          */
         Selection select = region.getSelection();
-        select.selectFolder();
-        
-                while(dirFound!=true){
-                    final File folder = new File(JOptionPane.showInputDialog("Enter the directory which you have saved the file: "));
-                    try {
-                        ArrayList<File> files = new ArrayList<>(Arrays.asList(folder.listFiles()));
-                        dirFound=true;
-                    } catch (Exception e) {
-                        System.out.println("You entered the directory incorrectly, double check the folder directory and try again");
-                    }
-                }
-        
+            try {
+                select.selectFolder();
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println("Folder selection has been canceled.");
+            }
+
         /**
-         * **************************** Mechanics
-         * ********************************
+         * **************************** Mechanics ********************************
          */
         System.out.println(region);
 
