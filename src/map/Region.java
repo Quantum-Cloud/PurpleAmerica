@@ -5,6 +5,9 @@
  */
 package map;
 
+/**
+ * ***************************** Imports *********************************
+ */
 import java.io.File;
 import java.util.*;
 import edu.princeton.cs.introcs.StdDraw;
@@ -15,6 +18,9 @@ import edu.princeton.cs.introcs.StdDraw;
  */
 public final class Region {
 
+    /**
+     * ***************************** Variables *********************************
+     */
     private final String regionName;
     private final File file;
     private final Selection select;
@@ -26,15 +32,19 @@ public final class Region {
     private List<Double> coordY;
     private List<String> subRegions;
 
+    /**
+     * ***************************** Methods *********************************
+     * @param regionName
+     */
     public Region(String regionName) {
         select = new Selection();
-        this.regionName = regionName.substring(0, regionName.length()-4);
+        this.regionName = regionName.substring(0, regionName.length() - 4);
         file = new File("C://Users/" + System.getProperty("user.name") + "/Documents/NetBeansProjects/PurpleAmerica/src/data/" + regionName);
         initialize();
     }
 
     public void initialize() {
-        coordinates = new ArrayList<>();  
+        coordinates = new ArrayList<>();
         subRegions = new ArrayList<>();
         dataSet = select.initializeModule(this);
         boundariesNum = Integer.parseInt(dataSet.get(4));
@@ -55,17 +65,17 @@ public final class Region {
     }
 
     public void addCoordinate(double coordinate) {
-        if(Double.toString(coordinate).length() > 5) {
+        if (Double.toString(coordinate).length() > 5) {
             coordinates.add(coordinate);
         }
     }
-    
-    public void addRegionSection(String input, String index){   
-            subRegions.add(index);
-            subRegions.add(input);
+
+    public void addRegionSection(String input, String index) {
+        subRegions.add(index);
+        subRegions.add(input);
     }
-    
-    public List<String> getRegionSection(List<String> subRegions){
+
+    public List<String> getRegionSection(List<String> subRegions) {
         return subRegions;
     }
 
@@ -99,8 +109,8 @@ public final class Region {
     public List<Double> getCoordinates(List<String> dataSet) {
         return coordinates;
     }
-    
-    public void drawRegion(){
+
+    public void drawRegion() {
         Map map = new Map();
     }
 
@@ -112,7 +122,7 @@ public final class Region {
             return false;
         }
     }
-    
+
     @Override
     public String toString() {
         return new StringBuffer("Region: " + regionName).append("| Data: ").append(Arrays.toString(dataSet.toArray())).toString();
