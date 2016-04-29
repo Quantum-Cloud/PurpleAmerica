@@ -18,7 +18,7 @@ public final class Region {
     private final String regionName;
     private final File file;
     private final Selection select;
-    int districtNum;
+    int boundariesNum;
     private List<String> dataSet;
     private List<Double> coordinates;
     private List<Double> boundaries;
@@ -28,8 +28,8 @@ public final class Region {
 
     public Region(String regionName) {
         select = new Selection();
-        this.regionName = regionName;
-        file = new File("C://Users/" + System.getProperty("user.name") + "/Documents/NetBeansProjects/PurpleAmerica/src/data/" + regionName + ".txt");
+        this.regionName = regionName.substring(0, regionName.length()-4);
+        file = new File("C://Users/" + System.getProperty("user.name") + "/Documents/NetBeansProjects/PurpleAmerica/src/data/" + regionName);
         initialize();
     }
 
@@ -37,7 +37,7 @@ public final class Region {
         coordinates = new ArrayList<>();  
         subRegions = new ArrayList<>();
         dataSet = select.initializeModule(this);
-        districtNum = Integer.parseInt(dataSet.get(4));
+        boundariesNum = Integer.parseInt(dataSet.get(4));
         boundaries = new ArrayList<>();
         getCoordinateBoundaries(coordinates);
         coordX = new ArrayList<>();
@@ -115,6 +115,6 @@ public final class Region {
     
     @Override
     public String toString() {
-        return new StringBuffer("Region: " + regionName).append("|Data: ").append(Arrays.toString(dataSet.toArray())).toString();
+        return new StringBuffer("Region: " + regionName).append("| Data: ").append(Arrays.toString(dataSet.toArray())).toString();
     }
 }

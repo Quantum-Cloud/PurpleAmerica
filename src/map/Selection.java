@@ -19,19 +19,21 @@ public class Selection {
     private File file;
     private int index = 0; 
 
-    void selectFolder() {
+    List<File> selectFolder() {
         boolean dirFound = false;
+        ArrayList<File> files = new ArrayList<>();
         while (dirFound != true) {
             final File folder = new File(JOptionPane.showInputDialog("Enter the directory which you have saved the file: "));
 
             try {
-                ArrayList<File> files = new ArrayList<>(Arrays.asList(folder.listFiles()));
+                files = new ArrayList<>(Arrays.asList(folder.listFiles()));
                 dirFound = true;
 
             } catch (Exception e) {
                 System.out.println("You entered the directory incorrectly, double check the folder directory and try again");
             }
         }
+        return files;
     }
 
     List<String> initializeModule(Region r) {
