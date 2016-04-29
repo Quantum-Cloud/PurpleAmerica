@@ -15,6 +15,7 @@ package map;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -28,21 +29,26 @@ public class PoliticalMap {
         /**
          * ***************************** Variables *******************************
          */
+        int index = 0;
         /**
          * Organic Variables *
          */
+        List<Region> regionList = new ArrayList<>();
+        List<File> fileList = new ArrayList<>();
         /**
          * **************************** Constructors *****************************
          */
-        Region region = new Region("USA");
         Map map = new Map();
+        Selection select = new Selection();
+        RegionBuilder build = new RegionBuilder();
+        
 
         /**
          * ******************************* Repo **********************************
          */
-        Selection select = region.getSelection();
+        //C:\Users\Rob\Documents\NetBeansProjects\PurpleAmerica\src\data
             try {
-                select.selectFolder();
+                fileList = select.selectFolder();
             } catch (Exception e) {
                 System.out.println("Folder selection has been canceled.");
             }
@@ -50,7 +56,6 @@ public class PoliticalMap {
         /**
          * **************************** Mechanics ********************************
          */
-        System.out.println(region);
-
+        regionList = build.regionBuilder(fileList);
     }
 }
