@@ -1,5 +1,8 @@
 package map;
 
+/**
+ * ***************************** Imports *********************************
+ */
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,12 +16,18 @@ import javax.swing.JOptionPane;
  */
 public class Selection {
 
+    /**
+     * ***************************** Variables *******************************
+     */
     private Scanner scanner;
     private List<String> dataSet;
     private Region region;
     private File file;
-    private int index = 0; 
+    private int index = 0;
 
+    /**
+     * ****************************** Methods ********************************
+     */
     List<File> selectFolder() {
         boolean dirFound = false;
         ArrayList<File> files = new ArrayList<>();
@@ -52,10 +61,10 @@ public class Selection {
 
     private List<String> readData(Scanner scanner) {
         List<String> dataTemp = new ArrayList<>();
- 
+
         while (scanner.hasNext()) {
             String input = scanner.next();
-            
+
             if (input != null) {
                 dataTemp.add(input);
                 index++;

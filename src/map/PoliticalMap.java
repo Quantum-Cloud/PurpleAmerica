@@ -12,6 +12,9 @@
  */
 package map;
 
+/**
+ * ***************************** Imports *********************************
+ */
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -41,17 +44,16 @@ public class PoliticalMap {
         Map map = new Map();
         Selection select = new Selection();
         RegionBuilder build = new RegionBuilder();
-        
 
         /**
          * ******************************* Repo **********************************
          */
         //C:\Users\Rob\Documents\NetBeansProjects\PurpleAmerica\src\data
-            try {
-                fileList = select.selectFolder();
-            } catch (Exception e) {
-                System.out.println("Folder selection has been canceled.");
-            }
+        try {
+            fileList = select.selectFolder();
+        } catch (Exception e) {
+            System.out.println("Folder selection has been canceled.");
+        }
 
         /**
          * **************************** Mechanics ********************************
