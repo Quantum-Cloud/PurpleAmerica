@@ -10,7 +10,6 @@ package map;
  */
 import java.io.File;
 import java.util.*;
-import edu.princeton.cs.introcs.StdDraw;
 
 /**
  *
@@ -19,7 +18,8 @@ import edu.princeton.cs.introcs.StdDraw;
 public final class Region {
 
     /**
-     * ***************************** Variables *********************************
+     * ***************************** Variables
+     * *********************************
      */
     private final String regionName;
     private final File file;
@@ -33,13 +33,15 @@ public final class Region {
     private List<String> subRegions;
 
     /**
-     * ***************************** Methods *********************************
+     * ***************************** Methods
+     *
+     *********************************
      * @param regionName
      */
     public Region(String regionName) {
         select = new Selection();
         this.regionName = regionName.substring(0, regionName.length() - 4);
-        file = new File("C://Users/" + System.getProperty("user.name") + "/Documents/NetBeansProjects/PurpleAmerica/src/data/" + regionName);
+        file = new File("src\\data\\" + regionName);
         initialize();
     }
 

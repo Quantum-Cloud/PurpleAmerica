@@ -17,9 +17,7 @@ package map;
  */
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -30,23 +28,25 @@ public class PoliticalMap {
     public static void main(String[] args) {
 
         /**
-         * ***************************** Variables *******************************
+         * ***************************** Variables
+         * *******************************
          */
-        int index = 0;
         /**
          * Organic Variables *
          */
         List<Region> regionList = new ArrayList<>();
         List<File> fileList = new ArrayList<>();
         /**
-         * **************************** Constructors *****************************
+         * **************************** Constructors
+         * *****************************
          */
         Map map = new Map();
         Selection select = new Selection();
         RegionBuilder build = new RegionBuilder();
 
         /**
-         * ******************************* Repo **********************************
+         * ******************************* Repo
+         * **********************************
          */
         //C:\Users\Rob\Documents\NetBeansProjects\PurpleAmerica\src\data
         try {
@@ -56,7 +56,8 @@ public class PoliticalMap {
         }
 
         /**
-         * **************************** Mechanics ********************************
+         * **************************** Mechanics
+         * ********************************
          */
         regionList = build.regionBuilder(fileList);
     }

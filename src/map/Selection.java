@@ -20,7 +20,6 @@ public class Selection {
      * ***************************** Variables *******************************
      */
     private Scanner scanner;
-    private List<String> dataSet;
     private Region region;
     private File file;
     private int index = 0;
@@ -32,6 +31,7 @@ public class Selection {
         boolean dirFound = false;
         ArrayList<File> files = new ArrayList<>();
         while (dirFound != true) {
+
             final File folder = new File(JOptionPane.showInputDialog("Enter the directory which you have saved the file: "));
 
             try {
@@ -54,7 +54,7 @@ public class Selection {
             dataTemp = readData(scanner);
 
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e);
         }
         return dataTemp;
     }
@@ -65,7 +65,6 @@ public class Selection {
         while (scanner.hasNext()) {
             String input = scanner.next();
 
-            if (input != null) {
                 dataTemp.add(input);
                 index++;
                 double coordinate = 0;
@@ -79,7 +78,6 @@ public class Selection {
 
                 }
                 region.addCoordinate(coordinate);
-            }
 
         }
         return dataTemp;
