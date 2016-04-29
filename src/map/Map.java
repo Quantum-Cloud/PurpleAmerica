@@ -12,6 +12,7 @@ import edu.princeton.cs.introcs.StdDraw;
  * @author hcps-traceync
  */
 public class Map {
+
     int[] coords;
 
     public Map() {
@@ -25,7 +26,7 @@ public class Map {
          StdDraw.point(50, 50);
          System.out.println("" + scan.hasNextInt());
          }*/
-        
+
         coords = new int[10];   //test coordinates
         coords[0] = 50;
         coords[1] = 100;
@@ -37,7 +38,7 @@ public class Map {
         coords[7] = 100;
         coords[8] = 289;
         coords[9] = 50;
-        
+
         StdDraw.setCanvasSize(600, 600);    //fixes scale system
         StdDraw.setXscale(-300, 300);
         StdDraw.setYscale(-300, 300);
@@ -51,14 +52,14 @@ public class Map {
             StdDraw.line(i * 10, 5, i * 10, -5);
             StdDraw.line(5, i * 10, -5, i * 10);
         }
-        
+
         StdDraw.setPenRadius(0.05);
         StdDraw.setPenColor(StdDraw.MAGENTA);
         StdDraw.point(-250, 250);
-        
-        StdDraw.setPenRadius(0.001);    
+
+        StdDraw.setPenRadius(0.001);
         StdDraw.setPenColor(StdDraw.BLACK);
-        for (int i = 0; i < coords.length - 3; i+=2) {  //draw lines between coordinates
+        for (int i = 0; i < coords.length - 3; i += 2) {  //draw lines between coordinates
             //TODO replace test coords with Robby's class once he is finished
             StdDraw.line(coords[i], coords[i + 1], coords[i + 2], coords[i + 3]);
         }
