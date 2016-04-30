@@ -38,8 +38,14 @@ public class MapSTATS extends javax.swing.JFrame {
      */
     public MapSTATS() {
         /**
-         * **************************** Look and Feel
-         * ********************************
+         * ****************************** Variables **********************************
+         */
+                Selection select = new Selection();
+                RegionBuilder build = new RegionBuilder();
+                List<File> fileList = new ArrayList<>();
+                List<Region> regionList = new ArrayList<>();
+        /**
+         * **************************** Look and Feel ********************************
          */
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -47,10 +53,9 @@ public class MapSTATS extends javax.swing.JFrame {
             System.out.println("There was an error in identifying your operating system, so java look and feel will be used. " + e);
         }
         /**
-         * **************************** User interface
-         * ********************************
+         * **************************** User interface ********************************
          */
-            initComponents();
+        initComponents();
     }
 
     /**
@@ -61,6 +66,10 @@ public class MapSTATS extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        drawButton = new javax.swing.JButton();
+        RegionList = new javax.swing.JComboBox<>();
+        map = new javax.swing.JPanel();
+        dataSet = new javax.swing.JTextField();
         Menu = new javax.swing.JMenuBar();
         file = new javax.swing.JMenu();
         openMapData = new javax.swing.JMenuItem();
@@ -73,6 +82,24 @@ public class MapSTATS extends javax.swing.JFrame {
         setTitle("MapSTATS");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setName("MapSTATS"); // NOI18N
+
+        drawButton.setText("Draw");
+        drawButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                drawButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout mapLayout = new javax.swing.GroupLayout(map);
+        map.setLayout(mapLayout);
+        mapLayout.setHorizontalGroup(
+            mapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 544, Short.MAX_VALUE)
+        );
+        mapLayout.setVerticalGroup(
+            mapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 472, Short.MAX_VALUE)
+        );
 
         file.setText("File");
 
@@ -117,11 +144,23 @@ public class MapSTATS extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 634, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(map, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(drawButton, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                    .addComponent(RegionList, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(dataSet)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 472, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(RegionList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(183, 183, 183)
+                .addComponent(dataSet)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(drawButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(map, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -135,34 +174,36 @@ public class MapSTATS extends javax.swing.JFrame {
         try {
             fileList = select.selectFolder();
         } catch (Exception e) {
-            
+
         }
-            regionList = build.regionBuilder(fileList);
+        regionList = build.regionBuilder(fileList);
+        for(int i = 0; i < regionList.size(); i++){
+            RegionList.addItem(regionList.get(i).getRegionName(regionList.get(i)));
+        }
     }//GEN-LAST:event_openMapDataActionPerformed
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
-        // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_exitActionPerformed
 
     private void saveImgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveImgActionPerformed
-        Component c = null; // the component you would like to print to a BufferedImage
-        JFrame frame = new JFrame();
-        frame.setBackground(Color.WHITE);
-        frame.setUndecorated(true);
-        frame.getContentPane().add(c);
-        frame.pack();
-        BufferedImage bi = new BufferedImage(c.getWidth(), c.getHeight(), BufferedImage.TYPE_INT_ARGB);
-        Graphics2D graphics = bi.createGraphics();
-        c.print(graphics);
-        graphics.dispose();
-        frame.dispose();
+        System.out.println("Currently you cannot save the image, try again in a later update. ");
     }//GEN-LAST:event_saveImgActionPerformed
+
+    private void drawButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drawButtonActionPerformed
+        List<Region> regionList = new ArrayList<>();
+        try {
+        dataSet.setText(RegionList.getSelectedItem().toString());
+        } catch (Exception e) {
+            System.out.println("No region has been found, the data may be corrupted. ");
+        }
+    }//GEN-LAST:event_drawButtonActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-       
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -194,9 +235,13 @@ public class MapSTATS extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar Menu;
+    private javax.swing.JComboBox<String> RegionList;
+    private javax.swing.JTextField dataSet;
+    private javax.swing.JButton drawButton;
     private javax.swing.JMenuItem exit;
     private javax.swing.JMenu file;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPanel map;
     private javax.swing.JMenuItem openMapData;
     private javax.swing.JMenuItem saveImg;
     private javax.swing.JMenu window;
