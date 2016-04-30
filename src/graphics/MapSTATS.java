@@ -63,13 +63,14 @@ public class MapSTATS extends javax.swing.JFrame {
         drawButton = new javax.swing.JButton();
         RegionList = new javax.swing.JComboBox<>();
         map = new javax.swing.JPanel();
-        dataSet = new javax.swing.JTextField();
         Menu = new javax.swing.JMenuBar();
         file = new javax.swing.JMenu();
         openMapData = new javax.swing.JMenuItem();
         saveImg = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         exit = new javax.swing.JMenuItem();
+        viewMenu = new javax.swing.JMenu();
+        colorPalette = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MapSTATS");
@@ -83,11 +84,14 @@ public class MapSTATS extends javax.swing.JFrame {
             }
         });
 
+        RegionList.setToolTipText("");
+        RegionList.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
         javax.swing.GroupLayout mapLayout = new javax.swing.GroupLayout(map);
         map.setLayout(mapLayout);
         mapLayout.setHorizontalGroup(
             mapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 547, Short.MAX_VALUE)
+            .addGap(0, 564, Short.MAX_VALUE)
         );
         mapLayout.setVerticalGroup(
             mapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,6 +134,14 @@ public class MapSTATS extends javax.swing.JFrame {
 
         Menu.add(file);
 
+        viewMenu.setText("View");
+
+        colorPalette.setIcon(new javax.swing.ImageIcon(getClass().getResource("/graphics/images/ic_color_lens.png"))); // NOI18N
+        colorPalette.setText("Color Palette");
+        viewMenu.add(colorPalette);
+
+        Menu.add(viewMenu);
+
         setJMenuBar(Menu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -137,19 +149,17 @@ public class MapSTATS extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(map, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(drawButton, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                .addComponent(map, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(RegionList, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(dataSet)))
+                    .addComponent(drawButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(RegionList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(dataSet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(RegionList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(drawButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(map, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -163,9 +173,9 @@ public class MapSTATS extends javax.swing.JFrame {
         regionList = build.regionBuilder(fileList);
         for(int i = 0; i < regionList.size(); i++){
             try {
-                RegionList.addItem("Region: " + i + ", " + regionList.get(i).getRegionNameConv(regionList.get(i)));
+                RegionList.addItem(regionList.get(i).getRegionNameConv(regionList.get(i)));
             } catch (Exception e) {
-                RegionList.addItem("Region: " + i + ", " + regionList.get(i).getRegionName(regionList.get(i)));
+                System.out.println(regionList.get(i).getRegionName(regionList.get(i)));
             }
         }
     }//GEN-LAST:event_openMapDataActionPerformed
@@ -181,14 +191,8 @@ public class MapSTATS extends javax.swing.JFrame {
     }//GEN-LAST:event_saveImgActionPerformed
 
     private void drawButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drawButtonActionPerformed
-        try {
-            dataSet.setText(RegionList.getSelectedItem().toString());
-            Region region = regionList.get(Integer.parseInt(RegionList.getSelectedItem().toString().replaceAll("[\\D]", "")));
-            region.drawRegion();
-        } catch (Exception e) {
-            System.out.println("No region has been found, the data may be corrupted. ");
-        }
-        
+        int itemNumber = RegionList.getSelectedIndex();
+            regionList.get(itemNumber).drawRegion();
     }//GEN-LAST:event_drawButtonActionPerformed
 
     /**
@@ -228,7 +232,7 @@ public class MapSTATS extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar Menu;
     private javax.swing.JComboBox<String> RegionList;
-    private javax.swing.JTextField dataSet;
+    private javax.swing.JMenuItem colorPalette;
     private javax.swing.JButton drawButton;
     private javax.swing.JMenuItem exit;
     private javax.swing.JMenu file;
@@ -236,5 +240,6 @@ public class MapSTATS extends javax.swing.JFrame {
     private javax.swing.JPanel map;
     private javax.swing.JMenuItem openMapData;
     private javax.swing.JMenuItem saveImg;
+    private javax.swing.JMenu viewMenu;
     // End of variables declaration//GEN-END:variables
 }

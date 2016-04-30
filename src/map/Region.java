@@ -10,6 +10,7 @@ package map;
  */
 import java.io.File;
 import java.util.*;
+import edu.princeton.cs.introcs.StdDraw;
 
 /**
  *
@@ -108,8 +109,8 @@ public final class Region {
     }
 
     public String getRegionNameConv(Region region) {
-
-        return US.parse(regionName).unnabreviated;
+        String convRegionName = US.parse(regionName).unnabreviated;
+        return convRegionName;
     }
 
     public List<Double> getCoordinates(List<String> dataSet) {
@@ -117,7 +118,30 @@ public final class Region {
     }
 
     public void drawRegion() {
-        Map map = new Map();
+        StdDraw.setCanvasSize(600, 600);    //fixes scale system
+        StdDraw.setXscale(-300, 300);
+        StdDraw.setYscale(-300, 300);
+        StdDraw.setPenRadius(0.001);
+        double[] bounds = new double[4];
+        double[] coords = new double[coordinates.size()];
+        bounds = convertDoubles(boundaries);
+        coords = convertDoubles(coordinates);
+        System.out.println(coords[3]);
+        for (int i = 0; i < coords.length - 3; i += 2) {  //draw lines between coordinates
+            //TODO replace test coords with Robbie's class once he is finished
+            StdDraw.line(coords[i], coords[i + 1], coords[i + 2], coords[i + 3]);
+        }
+    }
+
+    public static double[] convertDoubles(List<Double> doubles) {
+        double[] ret = new double[doubles.size()];
+        Iterator<Double> iterator = doubles.iterator();
+        int i = 0;
+        while (iterator.hasNext()) {
+            ret[i] = iterator.next().doubleValue();
+            i = i++;
+        }
+        return ret;
     }
 
     public boolean isDouble(String test) {
