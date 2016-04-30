@@ -18,8 +18,7 @@ import java.util.*;
 public final class Region {
 
     /**
-     * ***************************** Variables
-     * *********************************
+     * ***************************** Variables *********************************
      */
     private final String regionName;
     private final File file;
@@ -31,6 +30,7 @@ public final class Region {
     private List<Double> coordX;
     private List<Double> coordY;
     private List<String> subRegions;
+
     /**
      * ***************************** Methods
      *
@@ -106,8 +106,9 @@ public final class Region {
     public String getRegionName(Region region) {
         return regionName;
     }
-    
-    public String getRegionNameConv(Region region){
+
+    public String getRegionNameConv(Region region) {
+
         return US.parse(regionName).unnabreviated;
     }
 

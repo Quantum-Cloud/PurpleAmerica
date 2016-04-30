@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -25,24 +24,22 @@ public class Selection {
     private int index = 0;
 
     /**
-     * ****************************** Methods ********************************
-     * @return 
+     * ****************************** Methods
+     *
+     ********************************
+     * @return
      */
     public List<File> selectFolder() {
         FolderChooser chooser = new FolderChooser();
-        boolean dirFound = false;
         ArrayList<File> files = new ArrayList<>();
-        while (dirFound != true) {
 
-            final File folder = new File(chooser.FolderChooser());
+        final File folder = new File(chooser.FolderChooser());
 
-            try {
-                files = new ArrayList<>(Arrays.asList(folder.listFiles()));
-                dirFound = true;
+        try {
+            files = new ArrayList<>(Arrays.asList(folder.listFiles()));
 
-            } catch (Exception e) {
-                System.out.println("You entered the directory incorrectly, double check the folder directory and try again");
-            }
+        } catch (Exception e) {
+            System.out.println("You entered the directory incorrectly, double check the folder directory and try again");
         }
         return files;
     }
@@ -56,7 +53,7 @@ public class Selection {
             dataTemp = readData(scanner);
 
         } catch (Exception e) {
-            System.out.println(e);
+
         }
         return dataTemp;
     }
@@ -67,19 +64,19 @@ public class Selection {
         while (scanner.hasNext()) {
             String input = scanner.next();
 
-                dataTemp.add(input);
-                index++;
-                double coordinate = 0;
-                try {
+            dataTemp.add(input);
+            index++;
+            double coordinate = 0;
+            try {
 
-                    coordinate = Double.parseDouble(input);
+                coordinate = Double.parseDouble(input);
 
-                } catch (NumberFormatException e) {
+            } catch (NumberFormatException e) {
 
-                    region.addRegionSection(input, Integer.toString(index));
+                region.addRegionSection(input, Integer.toString(index));
 
-                }
-                region.addCoordinate(coordinate);
+            }
+            region.addCoordinate(coordinate);
 
         }
         return dataTemp;

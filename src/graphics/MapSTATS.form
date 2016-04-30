@@ -56,8 +56,6 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="window">
-        </Menu>
       </SubComponents>
     </Menu>
   </NonVisualComponents>
@@ -89,13 +87,13 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <Component id="map" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="drawButton" alignment="0" pref="175" max="32767" attributes="0"/>
                   <Component id="RegionList" alignment="0" max="32767" attributes="0"/>
-                  <Component id="dataSet" max="32767" attributes="0"/>
+                  <Component id="dataSet" alignment="0" max="32767" attributes="0"/>
               </Group>
           </Group>
       </Group>
@@ -104,9 +102,9 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Component id="RegionList" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="183" max="-2" attributes="0"/>
-              <Component id="dataSet" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
+              <Component id="dataSet" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Component id="drawButton" min="-2" pref="50" max="-2" attributes="0"/>
           </Group>
           <Component id="map" max="32767" attributes="0"/>
@@ -137,7 +135,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="544" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="547" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">

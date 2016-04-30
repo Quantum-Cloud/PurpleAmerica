@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class FolderChooser extends JPanel {
-    
+
     JButton go;
     JFileChooser chooser;
     String choosertitle;
