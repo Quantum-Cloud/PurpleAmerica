@@ -49,7 +49,7 @@ public class MapSTATS extends javax.swing.JFrame {
         /**
          * **************************** User interface ********************************
          */
-        initComponents();
+        initComponents();        
     }
 
     /**
@@ -62,7 +62,8 @@ public class MapSTATS extends javax.swing.JFrame {
 
         drawButton = new javax.swing.JButton();
         RegionList = new javax.swing.JComboBox<>();
-        map = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        yearData = new javax.swing.JComboBox<>();
         Menu = new javax.swing.JMenuBar();
         file = new javax.swing.JMenu();
         openMapData = new javax.swing.JMenuItem();
@@ -71,13 +72,14 @@ public class MapSTATS extends javax.swing.JFrame {
         exit = new javax.swing.JMenuItem();
         viewMenu = new javax.swing.JMenu();
         colorPalette = new javax.swing.JMenuItem();
+        mapProjection = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MapSTATS");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setName("MapSTATS"); // NOI18N
 
-        drawButton.setText("Draw");
+        drawButton.setText("Analyze");
         drawButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 drawButtonActionPerformed(evt);
@@ -87,16 +89,18 @@ public class MapSTATS extends javax.swing.JFrame {
         RegionList.setToolTipText("");
         RegionList.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        javax.swing.GroupLayout mapLayout = new javax.swing.GroupLayout(map);
-        map.setLayout(mapLayout);
-        mapLayout.setHorizontalGroup(
-            mapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 564, Short.MAX_VALUE)
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 534, Short.MAX_VALUE)
         );
-        mapLayout.setVerticalGroup(
-            mapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 472, Short.MAX_VALUE)
         );
+
+        yearData.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select a Year to map data", "1960", "1964", "1968", "1972", "1976", "1980", "1984", "1988", "1992", "1996", "2000", "2004", "2008", "2012" }));
 
         file.setText("File");
 
@@ -138,7 +142,21 @@ public class MapSTATS extends javax.swing.JFrame {
 
         colorPalette.setIcon(new javax.swing.ImageIcon(getClass().getResource("/graphics/images/ic_color_lens.png"))); // NOI18N
         colorPalette.setText("Color Palette");
+        colorPalette.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                colorPaletteActionPerformed(evt);
+            }
+        });
         viewMenu.add(colorPalette);
+
+        mapProjection.setIcon(new javax.swing.ImageIcon(getClass().getResource("/graphics/images/ic_map.png"))); // NOI18N
+        mapProjection.setText("Projection");
+        mapProjection.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mapProjectionActionPerformed(evt);
+            }
+        });
+        viewMenu.add(mapProjection);
 
         Menu.add(viewMenu);
 
@@ -149,20 +167,22 @@ public class MapSTATS extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(map, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(RegionList, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(drawButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE))
-                .addGap(0, 0, 0))
+                    .addComponent(drawButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+                    .addComponent(yearData, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(RegionList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(yearData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(drawButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(map, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -187,13 +207,22 @@ public class MapSTATS extends javax.swing.JFrame {
     }//GEN-LAST:event_exitActionPerformed
 
     private void saveImgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveImgActionPerformed
-        System.out.println("Currently you cannot save the image, try again in a later update. ");
+        System.out.println("Unsupported");
     }//GEN-LAST:event_saveImgActionPerformed
 
     private void drawButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drawButtonActionPerformed
         int itemNumber = RegionList.getSelectedIndex();
-            regionList.get(itemNumber).drawRegion();
+        int yearNumber = yearData.getSelectedIndex();
+            regionList.get(itemNumber).drawRegion(yearNumber);
     }//GEN-LAST:event_drawButtonActionPerformed
+
+    private void colorPaletteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_colorPaletteActionPerformed
+        System.out.println("Unsupported.");
+    }//GEN-LAST:event_colorPaletteActionPerformed
+
+    private void mapProjectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mapProjectionActionPerformed
+        System.out.println("Unsupported.");
+    }//GEN-LAST:event_mapProjectionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -236,10 +265,12 @@ public class MapSTATS extends javax.swing.JFrame {
     private javax.swing.JButton drawButton;
     private javax.swing.JMenuItem exit;
     private javax.swing.JMenu file;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
-    private javax.swing.JPanel map;
+    private javax.swing.JMenuItem mapProjection;
     private javax.swing.JMenuItem openMapData;
     private javax.swing.JMenuItem saveImg;
     private javax.swing.JMenu viewMenu;
+    private javax.swing.JComboBox<String> yearData;
     // End of variables declaration//GEN-END:variables
 }
