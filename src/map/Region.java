@@ -18,8 +18,7 @@ import java.util.*;
 public final class Region {
 
     /**
-     * ***************************** Variables
-     * *********************************
+     * ***************************** Variables *********************************
      */
     private final String regionName;
     private final File file;
@@ -31,6 +30,7 @@ public final class Region {
     private List<Double> coordX;
     private List<Double> coordY;
     private List<String> subRegions;
+
     /**
      * ***************************** Methods
      *
@@ -106,17 +106,34 @@ public final class Region {
     public String getRegionName(Region region) {
         return regionName;
     }
-    
-    public String getRegionNameConv(Region region){
-        return US.parse(regionName).unnabreviated;
+
+    public String getRegionNameConv(Region region) {
+        String convRegionName = US.parse(regionName).unnabreviated;
+        return convRegionName;
+    }
+
+    public String getRegionNameConv(String region) {
+        String convRegionName = US.parse(regionName).unnabreviated;
+        return convRegionName;
     }
 
     public List<Double> getCoordinates(List<String> dataSet) {
         return coordinates;
     }
 
-    public void drawRegion() {
-        Map map = new Map();
+    public void drawRegion() throws Exception {
+
+    }
+
+    public static double[] convertDoubles(List<Double> doubles) {
+        double[] ret = new double[doubles.size()];
+        Iterator<Double> iterator = doubles.iterator();
+        int i = 0;
+        while (iterator.hasNext()) {
+            ret[i] = iterator.next();
+            i++;
+        }
+        return ret;
     }
 
     public boolean isDouble(String test) {

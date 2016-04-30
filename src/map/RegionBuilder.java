@@ -26,9 +26,11 @@ public class RegionBuilder {
     int index = 0;
 
     /**
-     * ***************************** Methods *********************************
+     * ***************************** Methods
+     *
+     *********************************
      * @param fileList
-     * @return 
+     * @return
      */
     public List<Region> regionBuilder(List<File> fileList) {
         for (File object : fileList) {

@@ -1,6 +1,8 @@
 package map;
-//this is an opensource enum for unabbrieviating region names
+
 public enum US {
+    
+    US_COUNTY("US-counties","USA-county","US-county"),
     ALABAMA("Alabama","AL","US-AL"),
     ALASKA("Alaska","AK","US-AK"),
     ARIZONA("Arizona","AZ","US-AZ"),
@@ -52,8 +54,9 @@ public enum US {
     WEST_VIRGINIA("West Virginia","WV","US-WV"),
     WISCONSIN("Wisconsin","WI","US-WI"),
     WYOMING("Wyoming","WY","US-WY"),
-    PUERTO_RICO("Puerto Rico","PR","US-PR");
-
+    PUERTO_RICO("Puerto Rico","PR","US-PR"),
+    USA("United States", "USA", "USA");
+    
     String unnabreviated;
     String ANSIabbreviation;
     String ISOabbreviation;
