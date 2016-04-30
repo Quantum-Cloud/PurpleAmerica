@@ -26,13 +26,15 @@ public class Selection {
 
     /**
      * ****************************** Methods ********************************
+     * @return 
      */
-    List<File> selectFolder() {
+    public List<File> selectFolder() {
+        FolderChooser chooser = new FolderChooser();
         boolean dirFound = false;
         ArrayList<File> files = new ArrayList<>();
         while (dirFound != true) {
 
-            final File folder = new File(JOptionPane.showInputDialog("Enter the directory which you have saved the file: "));
+            final File folder = new File(chooser.FolderChooser());
 
             try {
                 files = new ArrayList<>(Arrays.asList(folder.listFiles()));
