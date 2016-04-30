@@ -7,7 +7,7 @@ package map;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
-
+import graphics.*;
 /**
  *
  * @author cmneville
@@ -24,7 +24,7 @@ public class PoliticalMapTest {
     public void testMain() {
         System.out.println("main");
         String[] args = null;
-        PoliticalMap.main(args);
+        MapSTATS.main(args);
         assertEquals(1,1);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
