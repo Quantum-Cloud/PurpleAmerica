@@ -10,6 +10,7 @@ package map;
  */
 import java.io.File;
 import java.util.*;
+import edu.princeton.cs.introcs.Draw;
 
 /**
  *
@@ -121,8 +122,11 @@ public final class Region {
         return coordinates;
     }
 
-    public void drawRegion() throws Exception {
+    public void drawRegion(int y) {
+        int yearNumber = y;
+        Draw draw = new Draw(getRegionNameConv(regionName));
 
+        System.out.println("Unsupported.");
     }
 
     public static double[] convertDoubles(List<Double> doubles) {
