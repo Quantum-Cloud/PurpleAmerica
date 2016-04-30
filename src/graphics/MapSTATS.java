@@ -32,18 +32,16 @@ import javax.swing.UnsupportedLookAndFeelException;
  * @author Rob
  */
 public class MapSTATS extends javax.swing.JFrame {
-
-    /**
-     * Creates new form GUI
-     */
+    
+    Selection select = new Selection();
+    RegionBuilder build = new RegionBuilder();
+    List<File> fileList = new ArrayList<>();
+    List<Region> regionList = new ArrayList<>();
+    
     public MapSTATS() {
         /**
          * ****************************** Variables **********************************
          */
-                Selection select = new Selection();
-                RegionBuilder build = new RegionBuilder();
-                List<File> fileList = new ArrayList<>();
-                List<Region> regionList = new ArrayList<>();
         /**
          * **************************** Look and Feel ********************************
          */
@@ -104,7 +102,7 @@ public class MapSTATS extends javax.swing.JFrame {
         file.setText("File");
 
         openMapData.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        openMapData.setIcon(new javax.swing.ImageIcon(getClass().getResource("/graphics/ic_folder.png"))); // NOI18N
+        openMapData.setIcon(new javax.swing.ImageIcon(getClass().getResource("/graphics/images/ic_folder.png"))); // NOI18N
         openMapData.setText("Open Map Data");
         openMapData.setToolTipText("Select the data directory to make a new map.");
         openMapData.addActionListener(new java.awt.event.ActionListener() {
@@ -116,7 +114,7 @@ public class MapSTATS extends javax.swing.JFrame {
         openMapData.getAccessibleContext().setAccessibleDescription("Allows user to select a folder to parse the data from.");
 
         saveImg.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
-        saveImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/graphics/ic_save.png"))); // NOI18N
+        saveImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/graphics/images/ic_save.png"))); // NOI18N
         saveImg.setText("Save image");
         saveImg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,7 +124,7 @@ public class MapSTATS extends javax.swing.JFrame {
         file.add(saveImg);
         file.add(jSeparator1);
 
-        exit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/graphics/ic_exit_to_app.png"))); // NOI18N
+        exit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/graphics/images/ic_exit_to_app.png"))); // NOI18N
         exit.setText("Exit");
         exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,10 +165,6 @@ public class MapSTATS extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void openMapDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMapDataActionPerformed
-            Selection select = new Selection();
-            RegionBuilder build = new RegionBuilder();
-            List<File> fileList = new ArrayList<>();
-            List<Region> regionList = new ArrayList<>();
         try {
             fileList = select.selectFolder();
         } catch (Exception e) {
@@ -178,7 +172,7 @@ public class MapSTATS extends javax.swing.JFrame {
         }
         regionList = build.regionBuilder(fileList);
         for(int i = 0; i < regionList.size(); i++){
-            RegionList.addItem(regionList.get(i).getRegionName(regionList.get(i)));
+            RegionList.addItem("Region: " + i + ", " + regionList.get(i).getRegionNameConv(regionList.get(i)));
         }
     }//GEN-LAST:event_openMapDataActionPerformed
 
@@ -191,12 +185,12 @@ public class MapSTATS extends javax.swing.JFrame {
     }//GEN-LAST:event_saveImgActionPerformed
 
     private void drawButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drawButtonActionPerformed
-        List<Region> regionList = new ArrayList<>();
         try {
-        dataSet.setText(RegionList.getSelectedItem().toString());
+            dataSet.setText(RegionList.getSelectedItem().toString());
         } catch (Exception e) {
             System.out.println("No region has been found, the data may be corrupted. ");
         }
+        
     }//GEN-LAST:event_drawButtonActionPerformed
 
     /**

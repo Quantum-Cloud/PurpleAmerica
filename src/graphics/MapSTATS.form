@@ -15,7 +15,7 @@
                   <KeyStroke key="Shift+Ctrl+M"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/graphics/ic_folder.png"/>
+                  <Image iconType="3" name="/graphics/images/ic_folder.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Open Map Data"/>
                 <Property name="toolTipText" type="java.lang.String" value="Select the data directory to make a new map."/>
@@ -33,7 +33,7 @@
                   <KeyStroke key="Ctrl+S"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/graphics/ic_save.png"/>
+                  <Image iconType="3" name="/graphics/images/ic_save.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Save image"/>
               </Properties>
@@ -46,7 +46,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="exit">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/graphics/ic_exit_to_app.png"/>
+                  <Image iconType="3" name="/graphics/images/ic_exit_to_app.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Exit"/>
               </Properties>

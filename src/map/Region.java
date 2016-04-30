@@ -31,7 +31,6 @@ public final class Region {
     private List<Double> coordX;
     private List<Double> coordY;
     private List<String> subRegions;
-
     /**
      * ***************************** Methods
      *
@@ -106,6 +105,10 @@ public final class Region {
 
     public String getRegionName(Region region) {
         return regionName;
+    }
+    
+    public String getRegionNameConv(Region region){
+        return US.parse(regionName).unnabreviated;
     }
 
     public List<Double> getCoordinates(List<String> dataSet) {
