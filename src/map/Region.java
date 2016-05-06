@@ -11,6 +11,7 @@ package map;
 import java.io.File;
 import java.util.*;
 import edu.princeton.cs.introcs.Draw;
+import edu.princeton.cs.introcs.StdDraw;
 
 /**
  *
@@ -127,8 +128,23 @@ public final class Region {
         List<String> electionData = new ArrayList<>();
         
         Draw draw = new Draw(getRegionNameConv(regionName));
+        draw.setCanvasSize(600, 600);
+        draw.setXscale(-300, 300);
+        draw.setYscale(-300, 300);
+        System.out.println(Arrays.toString(coordX.toArray()));
 
-        System.out.println("Unsupported.");
+        double[] dXcoords = new double[coordX.size()];
+        double[] dYcoords = new double[coordY.size()];
+        
+        for (int i = 0; i < coordX.size(); i++){
+            dXcoords[i] = coordX.get(i); 
+        }
+        for (int i = 0; i < coordY.size(); i++) {
+            dYcoords[i] = coordY.get(i);
+        }
+        draw.polygon(dXcoords, dYcoords);
+        
+        //System.out.println("Unsupported.");
     }
 
     public static double[] convertDoubles(List<Double> doubles) {
