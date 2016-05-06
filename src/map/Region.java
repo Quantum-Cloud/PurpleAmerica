@@ -124,6 +124,8 @@ public final class Region {
 
     public void drawRegion(int y) {
         int yearNumber = y;
+        List<String> electionData = new ArrayList<>();
+        
         Draw draw = new Draw(getRegionNameConv(regionName));
 
         System.out.println("Unsupported.");
