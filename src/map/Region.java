@@ -135,21 +135,25 @@ public final class Region {
         draw.setCanvasSize(600, 600);
         draw.setXscale(-300, 300);
         draw.setYscale(-300, 300);
-        System.out.println(Arrays.toString(coordX.toArray()));
+        //System.out.println(Arrays.toString(coordX.toArray()));
 
         double[] dXcoords = convertDoubles(coordX);
         double[] dYcoords = convertDoubles(coordY);
-        
+        System.out.println(dXcoords.length);
+        System.out.println(dXcoords[0]);
+        System.out.println(Arrays.toString(dXcoords));
         double xTemp = dXcoords[0];
         double yTemp = dYcoords[0];
 
-        ArrayList<Double> tempX = new ArrayList();
-        ArrayList<Double> tempY = new ArrayList();
+        List<Double> tempX = new ArrayList();
+        List<Double> tempY = new ArrayList();
         boolean done = false;
         int i = 0;
-        //System.out.println(convertDoubles(tempX));
+        int j = 0;
+        //System.out.println(Arrays.toString(convertDoubles(tempX)));
         //System.out.println(convertDoubles(tempY));
         while (!done) {
+            //System.out.println(dXcoords.length);
             while (i < dXcoords.length) {
                 tempX.add(dXcoords[i]);
                 if (i + 1 == xTemp) {
@@ -159,19 +163,19 @@ public final class Region {
                 }
                 i += 1;
             }
-            while (i < dYcoords.length) {
-                tempX.add(dYcoords[i]);
-                if (i + 1 == yTemp) {
-                    tempX.add(dYcoords[i + 1]);
-                    i += 2;
+            while (j < dYcoords.length) {
+                tempX.add(dYcoords[j]);
+                if (j + 1 == yTemp) {
+                    tempX.add(dYcoords[j + 1]);
+                    j += 2;
                     break;
                 }
-                i += 1;
+                j += 1;
             }
-            //System.out.println(Arrays.toString(tempX.toArray()));
-            //System.out.println(Arrays.toString(tempY.toArray()));
+            System.out.println(Arrays.toString(convertDoubles(tempX)));
+            System.out.println(Arrays.toString(convertDoubles(tempY)));
             draw.polygon(convertDoubles(tempX), convertDoubles(tempY));
-            //done = true;
+            done = true;
         }
 
         
@@ -182,14 +186,11 @@ public final class Region {
             if i = temp start new poly
         */
     }
-
-    public static double[] convertDoubles(List<Double> doubles) {
-        double[] ret = new double[doubles.size()];
-        Iterator<Double> iterator = doubles.iterator();
-        int i = 0;
-        while (iterator.hasNext()) {
-            ret[i] = iterator.next();
-            i++;
+    
+    public double[] convertDoubles(List<Double> d){
+        double[] ret = new double[d.size()];
+        for (int i = 0; i < ret.length; i++) {
+            ret[i] = d.get(i);
         }
         return ret;
     }
