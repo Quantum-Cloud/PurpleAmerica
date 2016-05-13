@@ -87,6 +87,10 @@ public final class Region {
             coordX.add(coordinates.get(i));
         }
     }
+    public int fetchStart(){
+        int i = 0;
+        return i; 
+    }
 
     public void getYCoordinates(List<Double> coordinates) {
         for (int i = 1; i < coordinates.size(); i += 2) {
@@ -133,18 +137,50 @@ public final class Region {
         draw.setYscale(-300, 300);
         System.out.println(Arrays.toString(coordX.toArray()));
 
-        double[] dXcoords = new double[coordX.size()];
-        double[] dYcoords = new double[coordY.size()];
+        double[] dXcoords = convertDoubles(coordX);
+        double[] dYcoords = convertDoubles(coordY);
         
-        for (int i = 0; i < coordX.size(); i++){
-            dXcoords[i] = coordX.get(i); 
+        double xTemp = dXcoords[0];
+        double yTemp = dYcoords[0];
+
+        ArrayList<Double> tempX = new ArrayList();
+        ArrayList<Double> tempY = new ArrayList();
+        boolean done = false;
+        int i = 0;
+        //System.out.println(convertDoubles(tempX));
+        //System.out.println(convertDoubles(tempY));
+        while (!done) {
+            while (i < dXcoords.length) {
+                tempX.add(dXcoords[i]);
+                if (i + 1 == xTemp) {
+                    tempX.add(dXcoords[i + 1]);
+                    i += 2;
+                    break;
+                }
+                i += 1;
+            }
+            while (i < dYcoords.length) {
+                tempX.add(dYcoords[i]);
+                if (i + 1 == yTemp) {
+                    tempX.add(dYcoords[i + 1]);
+                    i += 2;
+                    break;
+                }
+                i += 1;
+            }
+            //System.out.println(Arrays.toString(tempX.toArray()));
+            //System.out.println(Arrays.toString(tempY.toArray()));
+            draw.polygon(convertDoubles(tempX), convertDoubles(tempY));
+            //done = true;
         }
-        for (int i = 0; i < coordY.size(); i++) {
-            dYcoords[i] = coordY.get(i);
-        }
-        draw.polygon(dXcoords, dYcoords);
+
         
-        //System.out.println("Unsupported.");
+        /*
+            Draw polys for each sub-region
+            Loop through coordX and coordY
+            make temp var of the first number
+            if i = temp start new poly
+        */
     }
 
     public static double[] convertDoubles(List<Double> doubles) {
