@@ -32,6 +32,8 @@ public final class Region {
     private List<Double> coordX;
     private List<Double> coordY;
     private List<String> subRegions;
+    
+    HashMap<String, double[]> map = new HashMap();
 
     /**
      * ***************************** Methods
@@ -47,6 +49,10 @@ public final class Region {
     }
 
     public void initialize() {
+        double[] temp = new double[2];
+        map.put("test", temp);
+        map.put("doubles", new double[] {1, 3, 2});
+        
         coordinates = new ArrayList<>();
         subRegions = new ArrayList<>();
         dataSet = select.initializeModule(this);
@@ -139,9 +145,9 @@ public final class Region {
 
         double[] dXcoords = convertDoubles(coordX);
         double[] dYcoords = convertDoubles(coordY);
-        System.out.println(dXcoords.length);
-        System.out.println(dXcoords[0]);
-        System.out.println(Arrays.toString(dXcoords));
+//        System.out.println(dXcoords.length);
+//        System.out.println(dXcoords[0]);
+//        System.out.println(Arrays.toString(dXcoords));
         double xTemp = dXcoords[0];
         double yTemp = dYcoords[0];
 
@@ -153,12 +159,11 @@ public final class Region {
         //System.out.println(Arrays.toString(convertDoubles(tempX)));
         //System.out.println(convertDoubles(tempY));
         while (!done) {
-            //System.out.println(dXcoords.length);
             while (i < dXcoords.length) {
                 tempX.add(dXcoords[i]);
                 if (i + 1 == xTemp) {
                     tempX.add(dXcoords[i + 1]);
-                    i += 2;
+                    //i += 2;
                     break;
                 }
                 i += 1;
@@ -167,7 +172,7 @@ public final class Region {
                 tempX.add(dYcoords[j]);
                 if (j + 1 == yTemp) {
                     tempX.add(dYcoords[j + 1]);
-                    j += 2;
+                    //j += 2;
                     break;
                 }
                 j += 1;
@@ -177,14 +182,6 @@ public final class Region {
             draw.polygon(convertDoubles(tempX), convertDoubles(tempY));
             done = true;
         }
-
-        
-        /*
-            Draw polys for each sub-region
-            Loop through coordX and coordY
-            make temp var of the first number
-            if i = temp start new poly
-        */
     }
     
     public double[] convertDoubles(List<Double> d){
