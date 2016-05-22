@@ -213,7 +213,7 @@ public class MapSTATS extends javax.swing.JFrame {
     private void drawButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drawButtonActionPerformed
         int itemNumber = RegionList.getSelectedIndex();
         int yearNumber = yearData.getSelectedIndex();
-            regionList.get(itemNumber).drawRegion(yearNumber);
+        regionList.get(itemNumber).drawRegion(yearNumber);
     }//GEN-LAST:event_drawButtonActionPerformed
 
     private void colorPaletteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_colorPaletteActionPerformed
