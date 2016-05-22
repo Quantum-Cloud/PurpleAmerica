@@ -23,7 +23,7 @@ public class RegionSTATS {
         try {
             File file = new File("AK1972");
             Scanner scanner = new Scanner(file);
-            dataTemp = selection.readData(scanner);
+            //dataTemp = selection.readData(scanner);
         } catch (Exception e) {
             System.out.println("Failed.");
         }
