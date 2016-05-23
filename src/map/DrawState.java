@@ -6,12 +6,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class MapTest {
+public class DrawState {
 
     File dir;
     Scanner scan;
 
-    public MapTest(String state) throws FileNotFoundException {
+    public DrawState(String state) throws FileNotFoundException {
         Draw draw = new Draw(state);
         draw.setCanvasSize(600, 600);
 
