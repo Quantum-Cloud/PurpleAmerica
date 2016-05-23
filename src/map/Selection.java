@@ -58,7 +58,7 @@ public class Selection {
         return dataTemp;
     }
 
-    private List<String> readData(Scanner scanner) {
+    List<String> readData(Scanner scanner) {
         List<String> dataTemp = new ArrayList<>();
 
         while (scanner.hasNext()) {

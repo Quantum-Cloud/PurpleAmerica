@@ -27,4 +27,9 @@ public class stateColor {
         return new Color(repubRatio, otherRatio, demRatio); 
     }
     
+    public Color stateColor(int numRepub, int numDem, int numOther, Color alternate1, Color alternate2, Color alternate3){
+        //...
+        return alternate1; 
+    }
+    
 }
