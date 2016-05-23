@@ -72,7 +72,6 @@ public class DrawUSA {
 
                 numPoints = scan.nextInt();
             }
-
         }
     }
 }
