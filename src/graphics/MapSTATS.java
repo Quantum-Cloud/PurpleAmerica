@@ -64,6 +64,7 @@ public class MapSTATS extends javax.swing.JFrame {
         RegionList = new javax.swing.JComboBox<String>();
         jPanel1 = new javax.swing.JPanel();
         drawAmerica = new javax.swing.JButton();
+        americaCounties = new javax.swing.JButton();
         yearData = new javax.swing.JComboBox<String>();
         Menu = new javax.swing.JMenuBar();
         file = new javax.swing.JMenu();
@@ -97,19 +98,30 @@ public class MapSTATS extends javax.swing.JFrame {
             }
         });
 
+        americaCounties.setText("America + Counties");
+        americaCounties.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                americaCountiesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(drawAmerica, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 404, Short.MAX_VALUE))
+                .addGap(134, 134, 134)
+                .addComponent(americaCounties, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 135, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(drawAmerica, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(americaCounties, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(drawAmerica, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)))
         );
 
         yearData.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select a Year to map data", "1960", "1964", "1968", "1972", "1976", "1980", "1984", "1988", "1992", "1996", "2000", "2004", "2008", "2012" }));
@@ -225,7 +237,9 @@ public class MapSTATS extends javax.swing.JFrame {
     private void drawButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drawButtonActionPerformed
         int itemNumber = RegionList.getSelectedIndex();
         int yearNumber = yearData.getSelectedIndex();
-        regionList.get(itemNumber).drawRegion(yearNumber);
+        System.out.println(itemNumber);
+        System.out.println(yearNumber);
+        //regionList.get(itemNumber).drawRegion(yearNumber);
     }//GEN-LAST:event_drawButtonActionPerformed
 
     private void colorPaletteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_colorPaletteActionPerformed
@@ -239,6 +253,10 @@ public class MapSTATS extends javax.swing.JFrame {
     private void drawAmericaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drawAmericaActionPerformed
         
     }//GEN-LAST:event_drawAmericaActionPerformed
+
+    private void americaCountiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_americaCountiesActionPerformed
+        //DrawUSACounties draw = new DrawUSACounties();
+    }//GEN-LAST:event_americaCountiesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -277,6 +295,7 @@ public class MapSTATS extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar Menu;
     private javax.swing.JComboBox<String> RegionList;
+    private javax.swing.JButton americaCounties;
     private javax.swing.JMenuItem colorPalette;
     private javax.swing.JButton drawAmerica;
     private javax.swing.JButton drawButton;
