@@ -62,11 +62,11 @@ public class MapSTATS extends javax.swing.JFrame {
     private void initComponents() {
 
         drawButton = new javax.swing.JButton();
-        RegionList = new javax.swing.JComboBox<String>();
+        RegionList = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         drawAmerica = new javax.swing.JButton();
         americaCounties = new javax.swing.JButton();
-        yearData = new javax.swing.JComboBox<String>();
+        yearData = new javax.swing.JComboBox<>();
         Menu = new javax.swing.JMenuBar();
         file = new javax.swing.JMenu();
         openMapData = new javax.swing.JMenuItem();
@@ -91,6 +91,11 @@ public class MapSTATS extends javax.swing.JFrame {
 
         RegionList.setToolTipText("");
         RegionList.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        RegionList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegionListActionPerformed(evt);
+            }
+        });
 
         drawAmerica.setText("America");
         drawAmerica.addActionListener(new java.awt.event.ActionListener() {
@@ -125,7 +130,7 @@ public class MapSTATS extends javax.swing.JFrame {
                     .addComponent(drawAmerica, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)))
         );
 
-        yearData.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select a Year to map data", "1960", "1964", "1968", "1972", "1976", "1980", "1984", "1988", "1992", "1996", "2000", "2004", "2008", "2012" }));
+        yearData.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select a Year to map data", "1960", "1964", "1968", "1972", "1976", "1980", "1984", "1988", "1992", "1996", "2000", "2004", "2008", "2012" }));
 
         file.setText("File");
 
@@ -278,6 +283,10 @@ public class MapSTATS extends javax.swing.JFrame {
             System.err.println("File Not Found");
         } 
     }//GEN-LAST:event_americaCountiesActionPerformed
+
+    private void RegionListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegionListActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RegionListActionPerformed
 
     /**
      * @param args the command line arguments
