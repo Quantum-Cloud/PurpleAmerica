@@ -21,8 +21,6 @@ public class DrawUSA {
     public DrawUSA(String year) throws FileNotFoundException {
         Draw draw = new Draw();     //initialize window
         draw.setCanvasSize(1000, 500);
-        draw.setPenColor(Color.BLACK);
-        draw.setPenRadius(.005);
 
         TurnoutGraph graph = new TurnoutGraph();    //initialize voter turnout graph
         graph.percentTurnoutGraph();

@@ -17,6 +17,7 @@ package graphics;
  */
 import map.*;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -81,7 +82,7 @@ public class MapSTATS extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setName("MapSTATS"); // NOI18N
 
-        drawButton.setText("Analyze");
+        drawButton.setText("State");
         drawButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 drawButtonActionPerformed(evt);
@@ -235,11 +236,17 @@ public class MapSTATS extends javax.swing.JFrame {
     }//GEN-LAST:event_saveImgActionPerformed
 
     private void drawButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drawButtonActionPerformed
-        int itemNumber = RegionList.getSelectedIndex();
-        int yearNumber = yearData.getSelectedIndex();
+        Object itemNumber = RegionList.getSelectedItem();
+        String state = itemNumber.toString();
         System.out.println(itemNumber);
-        System.out.println(yearNumber);
-        //regionList.get(itemNumber).drawRegion(yearNumber);
+        int yearNumber = yearData.getSelectedIndex();
+        int year = 1956 + (yearNumber * 4);
+        System.out.println(year);
+        try {
+            DrawState draw = new DrawState(state, year);
+        } catch (FileNotFoundException ex) {
+            System.err.println("File Not Found");
+        }
     }//GEN-LAST:event_drawButtonActionPerformed
 
     private void colorPaletteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_colorPaletteActionPerformed
@@ -251,11 +258,25 @@ public class MapSTATS extends javax.swing.JFrame {
     }//GEN-LAST:event_mapProjectionActionPerformed
 
     private void drawAmericaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drawAmericaActionPerformed
-        
+        int yearNumber = yearData.getSelectedIndex();
+        int year = 1956  + (yearNumber * 4);
+        System.out.println(year);
+        try {
+            DrawUSA draw = new DrawUSA(String.valueOf(year));
+        } catch (FileNotFoundException ex) {
+            System.err.println("File Not Found");
+        }
     }//GEN-LAST:event_drawAmericaActionPerformed
 
     private void americaCountiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_americaCountiesActionPerformed
-        //DrawUSACounties draw = new DrawUSACounties();
+        int yearNumber = yearData.getSelectedIndex();
+        int year = 1956 + (yearNumber * 4);
+        System.out.println(year);
+        try {
+            DrawUSACounties draw = new DrawUSACounties(String.valueOf(year));
+        } catch (FileNotFoundException ex) {
+            System.err.println("File Not Found");
+        } 
     }//GEN-LAST:event_americaCountiesActionPerformed
 
     /**
