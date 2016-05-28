@@ -29,14 +29,14 @@ public class Selection {
      ********************************
      * @return
      */
-    public List<File> selectFolder() {
-        FolderChooser chooser = new FolderChooser();
+    public List<File> selectFolder() {//selects the list of files
+        FolderChooser chooser = new FolderChooser();//makes the chooser for folder sleection
         ArrayList<File> files = new ArrayList<>();
 
-        final File folder = new File(chooser.FolderChooser());
+        final File folder = new File(chooser.FolderChooser());//sets the folder selection to that file selection
 
         try {
-            files = new ArrayList<>(Arrays.asList(folder.listFiles()));
+            files = new ArrayList<>(Arrays.asList(folder.listFiles()));//trys to put that into an array
 
         } catch (Exception e) {
             System.out.println("You entered the directory incorrectly, double check the folder directory and try again");
@@ -44,13 +44,13 @@ public class Selection {
         return files;
     }
 
-    List<String> initializeModule(Region r) {
+    List<String> initializeModule(Region r) {//gets region r information
         List<String> dataTemp = new ArrayList<>();
         region = r;
         try {
             file = region.getRegionFile();
             scanner = new Scanner(file);
-            dataTemp = readData(scanner);
+            dataTemp = readData(scanner);//scans it
 
         } catch (Exception e) {
 
@@ -59,26 +59,26 @@ public class Selection {
     }
 
     private List<String> readData(Scanner scanner) {
-        List<String> dataTemp = new ArrayList<>();
+        List<String> dataTemp = new ArrayList<>();//temp list for return dataSet
 
-        while (scanner.hasNext()) {
-            String input = scanner.next();
+        while (scanner.hasNext()) {//while something exists in the scanner, do 
+            String input = scanner.next();//input = scanner value
 
-            dataTemp.add(input);
-            index++;
-            double coordinate = 0;
+            dataTemp.add(input);//add the input
+            index++;//increment the index
+            double coordinate = 0;//initialize the coordinate
             try {
 
-                coordinate = Double.parseDouble(input);
+                coordinate = Double.parseDouble(input);//parse the coordinate  as a double
 
             } catch (NumberFormatException e) {
 
-                region.addRegionSection(input, Integer.toString(index));
+                region.addRegionSection(input, Integer.toString(index));//if its not a double it must be a region section
 
             }
-            region.addCoordinate(coordinate);
+            region.addCoordinate(coordinate);//add the coordinate
 
         }
-        return dataTemp;
+        return dataTemp;//return array temp
     }
 }

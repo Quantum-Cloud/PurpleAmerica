@@ -12,22 +12,22 @@ import java.util.*;
  *
  * @author hcps-rozarioed
  */
-public class RegionSTATS {
-
-    List<String> dataTemp = new ArrayList<>();
-    Region region = new Region("AK1972");
-    Selection selection = new Selection();
-
-    public List<String> readRegionStats() {
-        selection.initializeModule(region);
-        try {
-            File file = new File("AK1972");
-            Scanner scanner = new Scanner(file);
-            //dataTemp = selection.readData(scanner);
-        } catch (Exception e) {
-            System.out.println("Failed.");
-        }
-        return dataTemp; 
-    }
-
-}
+//public class RegionSTATS {
+//
+//    List<String> dataTemp = new ArrayList<>();
+//    Region region = new Region("AK1972");
+//    Selection selection = new Selection();
+//
+//    public List<String> readRegionStats() {
+//        selection.initializeModule(region);
+//        try {
+//            File file = new File("AK1972");
+//            Scanner scanner = new Scanner(file);
+//            //dataTemp = selection.readData(scanner);
+//        } catch (Exception e) {
+//            System.out.println("Failed.");
+//        }
+//        return dataTemp; 
+//    }
+//
+//}

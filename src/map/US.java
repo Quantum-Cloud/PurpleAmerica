@@ -75,16 +75,16 @@ public enum US {
      */
     public static US parse(String input) {
         if (null == input) {
-            return null;
+            return null;//if it has no string, don't do anything
         }
-        input = input.trim();
-        for (US state : values()) {
+        input = input.trim();//remove unecessary spaces
+        for (US state : values()) {//for each state, set the values
             if (state.unnabreviated.equalsIgnoreCase(input)    ||
                 state.ANSIabbreviation.equalsIgnoreCase(input) ||
                 state.ISOabbreviation.equalsIgnoreCase(input)) {
-                return state;
+                return state;//returns the state name string
             }
         }
-        return null;
+        return null;//if parsing fails return null.
     }
 }
