@@ -120,12 +120,12 @@ public final class Region {
     }
 
     public String getRegionNameConv(Region region) {
-        String convRegionName = US.parse(regionName).unnabreviated;
+        String convRegionName = US.parse(regionName).ANSIabbreviation;
         return convRegionName;
     }
 
     public String getRegionNameConv(String region) {
-        String convRegionName = US.parse(regionName).unnabreviated;
+        String convRegionName = US.parse(regionName).ANSIabbreviation;
         return convRegionName;
     }
 
