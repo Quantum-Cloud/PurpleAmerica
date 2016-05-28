@@ -15,6 +15,7 @@ package graphics;
 /**
  * ***************************** Imports *********************************
  */
+import map.Projection;
 import map.*;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -259,7 +260,9 @@ public class MapSTATS extends javax.swing.JFrame {
     }//GEN-LAST:event_colorPaletteActionPerformed
 
     private void mapProjectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mapProjectionActionPerformed
-        System.out.println("Unsupported.");
+        
+        System.out.println("Broken");//My method no longer works because the parsing method was changed to hashmaps.
+        
     }//GEN-LAST:event_mapProjectionActionPerformed
 
     private void drawAmericaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drawAmericaActionPerformed
